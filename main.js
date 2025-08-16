@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
 
                 e.preventDefault(); // Stop the browser from navigating instantly
-                document.body.classList.remove('body-visible'); // Start the fade-out
+                document.body.classList.add('fading-out'); // Start the fade-out using the new class
 
                 // Wait for the fade-out animation to finish, then navigate
                 setTimeout(() => {
@@ -32,6 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     };
 
-    document.body.classList.add('body-visible'); // Fade in the current page
+    // The page now fades in automatically with CSS animations, so we just set up the transitions.
     setupPageTransitions(); // Set up transitions for all links on the page
 });
