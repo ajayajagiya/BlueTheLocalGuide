@@ -4,21 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blue The Local Guide</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Blue The Local Guide</h1>
-    <p>
-        We create Google-certified 360° virtual tours using Street View technology. 
-        We help businesses enhance their online presence with immersive, high-resolution tours 
-        that work on any device, boosting credibility and attracting new customers 
-        through Google Search and Maps.
-    </p>
+    <header>
+        <nav>
+            <a href="/" class="logo">Blue The Local Guide</a>
+            <ul>
+                <li><a href="#tours">Tours</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div id="panorama"></div>
+    <main>
+        <div id="panorama-container">
+            <!-- 
+                IMPORTANT: Replace the src="..." value below with the one from your Google Maps embed code.
+                You can get this from the "Share or embed a map" option on Google Maps.
+                Make sure to keep the other attributes like width, height, style, etc.
+            -->
+            <iframe src="https://www.google.com/maps/embed?pb=!4v1755336839318!6m8!1m7!1sCAoSLEFGMVFpcE9DbGEtZkpIMXRvaktMa2lzNjJlcXpuTzZRdWJpUHppZ0t1TmZT!2m2!1d22.29790277554644!2d73.19636141691828!3f91.97319279046692!4f8.759123055055014!5f0.4000000000000002" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-    <script src="script.js"></script>
+        <section id="about" class="content-section">
+            <h2>About Us</h2>
+            <h1>Blue The Local Guide</h1>
+            <p>
+                We create Google-certified 360° virtual tours using Street View technology.
+                We help businesses enhance their online presence with immersive, high-resolution tours
+                that work on any device, boosting credibility and attracting new customers
+                through Google Search and Maps.
+            </p>
+        </section>
+
+        <section id="tours" class="content-section">
+            <h2>Featured Tours</h2>
+            <p>Our featured tours will be displayed here soon!</p>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <p>&copy; 2024 Blue The Local Guide. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>

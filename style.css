@@ -1,7 +1,99 @@
-body {
-    font-family: sans-serif;
+/* Basic Reset and Body Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
 }
-#panorama {
+
+/* Header and Navigation Bar */
+header {
+    position: fixed; /* Sticks the header to the top */
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 500px;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    z-index: 1000; /* Ensures it stays on top of other content */
+    transition: background-color 0.3s ease;
+    height: 4rem; /* Give header a fixed height */
+    display: flex; /* Use flexbox to center nav content vertically */
+    align-items: center;
+}
+
+header:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem; /* Remove vertical padding as header now controls it */
+    width: 100%; /* Make nav take full width of header */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+nav ul li a:hover {
+    border-bottom: 2px solid #ffffff;
+}
+
+/* Main Content Area */
+main {
+    /* Add padding to the top to push content below the fixed header */
+    padding-top: 4rem; /* Match the header height */
+}
+
+/* Panorama Container */
+#panorama-container {
+    height: 650px; /* Set a fixed height for the viewer */
+    width: 100%;
+    background-color: #000; /* Add a background while the iframe loads */
+}
+
+/* Content Sections */
+.content-section {
+    padding: 80px 20px; /* Padding top/bottom and left/right */
+    max-width: 900px;
+    margin: 0 auto; /* Centers the content block */
+    background-color: #ffffff;
+}
+
+.content-section h1, .content-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
 }
