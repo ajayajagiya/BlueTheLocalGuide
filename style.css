@@ -1,3 +1,9 @@
+/* Animation Keyframes for Page Transitions */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 /* Basic Reset and Body Styles */
 body, html {
     margin: 0;
@@ -6,6 +12,25 @@ body, html {
     background-color: #f4f4f4;
     color: #333;
     scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+}
+
+/*
+   Apply a fade-in animation on page load.
+   This is more robust than starting with opacity: 0, as the content
+   is always accessible even if animations or JS fail.
+*/
+body {
+    opacity: 1;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/*
+   This class will be added by JavaScript to trigger the fade-out
+   before navigating to another page.
+*/
+body.fading-out {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
 }
 
 /* Header and Navigation Bar */
@@ -43,7 +68,7 @@ nav {
 }
 
 .logo img {
-    height: 12rem; /* Adjust this value to fit your logo's proportions */
+    height: 12rem; /* Adjust this value to 12rem */
     width: auto;
     /* This adds a subtle shadow to make the logo pop from the background */
     filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.6));
@@ -85,10 +110,23 @@ main {
 
 /* Content Sections */
 .content-section {
-    padding: 80px 20px; /* Padding top/bottom and left/right */
-    max-width: 900px;
-    margin: 0 auto; /* Centers the content block */
+    padding: 80px 2rem; /* Padding top/bottom and left/right */
+    /* max-width, margin, and background are removed to allow full-width sections */
+}
+
+/* Give sections alternating backgrounds for a modern, clean look */
+main > .content-section:nth-of-type(odd) {
     background-color: #ffffff;
+}
+
+main > .content-section:nth-of-type(even) {
+    background-color: #f9f9f9; /* A slightly different shade for contrast */
+}
+
+/* New wrapper to constrain the width of the text content inside a full-width section */
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .content-section h1, .content-section h2 {
@@ -96,10 +134,199 @@ main {
     margin-bottom: 20px;
 }
 
-/* Footer */
-footer {
-    background-color: #222;
+/* =================================
+   About Page Specific Styles
+   ================================= */
+
+/* Page Header Banner */
+.page-header {
+    background: linear-gradient(to right, #2c3e50, #000000); /* Dark gradient background */
     color: #ffffff;
     text-align: center;
-    padding: 20px 0;
+    padding: 4rem 1rem;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.about-text {
+    /* No specific layout styles needed anymore */
+}
+
+.about-text h2 {
+    text-align: center;
+    margin-top: 0;
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.about-text p {
+    line-height: 1.7;
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 750px; /* Constrain line length for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =================================
+   Contact Section Styles
+   ================================= */
+
+.contact-section {
+    background-color: #222;
+    color: #f0f0f0;
+    padding: 80px 2rem;
+}
+
+.contact-container {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.contact-details {
+    flex: 1;
+}
+
+.contact-map {
+    flex: 2;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the iframe corners are rounded */
+}
+
+.contact-heading {
+    text-align: left !important; /* Override general h2 styles */
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.contact-panel {
+    margin-bottom: 25px;
+}
+
+.contact-panel h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin: 0 0 8px 0;
+    font-weight: 500;
+}
+
+.contact-panel p {
+    margin: 0;
+    line-height: 1.6;
+    color: #c0c0c0;
+}
+
+.contact-panel a {
+    color: #c0c0c0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-panel a:hover {
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+/* =================================
+   Footer Styles
+   ================================= */
+
+/* Main footer container */
+.site-footer {
+    background-color: #1c1c1c; /* A dark, modern background */
+    color: #f0f0f0;           /* Light text color for contrast */
+    padding: 40px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Space between the links, icons, and bottom text */
+}
+
+/* Navigation links section */
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allows links to wrap on smaller screens */
+    justify-content: center;
+    gap: 15px 25px; /* Vertical and horizontal gap */
+}
+
+.footer-links a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #007bff; /* A highlight color on hover */
+    text-decoration: underline;
+}
+
+/* Social media icons section */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between icons */
+}
+
+.social-icons a {
+    display: inline-block; /* Ensures transforms apply correctly */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1); /* Slightly enlarge icon on hover */
+    opacity: 0.85;         /* A subtle fade effect on hover */
+}
+
+/* Optional: If you want your icons to be circular */
+/*
+.social-icons img {
+    border-radius: 50%;
+}
+*/
+
+/* Bottom text section (copyright) */
+.footer-bottom {
+    border-top: 1px solid #444; /* A subtle separator line */
+    padding-top: 20px;
+    width: 100%;
+    max-width: 800px; /* Keeps the line from being too wide on large screens */
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #aaa; /* A more muted color for the copyright text */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 30px 15px;
+        gap: 25px;
+    }
+
+    .footer-links ul {
+        flex-direction: column; /* Stack links vertically */
+        gap: 15px;
+    }
 }
