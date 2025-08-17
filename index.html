@@ -32,15 +32,12 @@
 
     <main>
         <div id="panorama-container">
-            <!-- 
-                IMPORTANT: Replace the src="..." value below with the one from your Google Maps embed code.
-                You can get this from the "Share or embed a map" option on Google Maps.
-                Make sure to keep the other attributes like width, height, style, etc.
-            -->
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!4v1755336839318!6m8!1m7!1sCAoSLEFGMVFpcE9DbGEtZkpIMXRvaktMa2lzNjJlcXpuTzZRdWJpUHppZ0t1TmZT!2m2!1d22.29790277554644!2d73.19636141691828!3f91.97319279046692!4f8.759123055055014!5f0.4000000000000002"
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="panorama-slider-wrapper">
+                <!-- Panorama iframes will be dynamically inserted here by main.js -->
+            </div>
+            <button class="slider-btn prev-btn" aria-label="Previous Panorama">&#10094;</button>
+            <button class="slider-btn next-btn" aria-label="Next Panorama">&#10095;</button>
+            <a href="#VirtualTours" class="scroll-down-btn" aria-label="Scroll to next section">&#8595;</a>
         </div>
 
         <section id="VirtualTours" class="content-section">
@@ -149,6 +146,7 @@
         </div>
     </footer>
 
+    <script src="PanoramaData.js"></script>
     <script src="VirtualToursData.js"></script>
     <script src="main.js"></script>
 </body>
