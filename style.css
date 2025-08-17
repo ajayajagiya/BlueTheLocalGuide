@@ -39,7 +39,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0); /* Semi-transparent background */
     z-index: 1000; /* Ensures it stays on top of other content */
     transition: background-color 0.3s ease;
     height: 4rem; /* Give header a fixed height */
@@ -48,7 +48,7 @@ header {
 }
 
 header:hover {
-    background-color: rgba(22, 96, 194, 0.8);
+    background-color: rgb(9, 89, 143); /* Slightly darker deep blue shade for a beautiful look */
 }
 
 nav {
@@ -132,6 +132,78 @@ main > .content-section:nth-of-type(even) {
 .content-section h1, .content-section h2 {
     text-align: center;
     margin-bottom: 20px;
+}
+
+/* =================================
+   Homepage Specific Styles
+   ================================= */
+
+/* Styles for the summary block on the homepage */
+.about-summary {
+    text-align: center;
+}
+
+/* Kicker/Eyebrow style for the "About Us" text */
+.kicker {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #09598f; /* A deep blue to match the brand */
+}
+
+.about-intro {
+    margin-bottom: 4rem; /* Add space between the intro and the personal card */
+}
+
+.about-personal-card {
+    background: #f7faff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+.about-personal-card h2 {
+    color: #1a73e8;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    margin-top: 0;
+}
+
+.about-personal-card p {
+    line-height: 1.7;
+    font-size: 1.1rem;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-personal-card p:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.about-personal-card strong {
+    color: #1a73e8;
+}
+
+/* General button style */
+.btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 28px;
+    background-color: #09598f; /* A deep blue to match the brand */
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #07446e; /* A slightly darker shade on hover */
+    transform: translateY(-2px); /* A subtle lift effect */
 }
 
 /* =================================
