@@ -11,7 +11,7 @@
 <body>
     <header>
         <nav>
-            <a href="/" class="logo">
+            <a href="/#" class="logo">
                 <!-- IMPORTANT: Make sure your logo is at 'assets/logo.png' -->
                 <img src="assets/icons/logo.png" alt="Blue The Local Guide Logo">
             </a>
@@ -22,12 +22,12 @@
             </button>
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Virtual Tours</a></li>
-                <li><a href="#">Street View</a></li>
-                <li><a href="#">360 Photo Gallery</a></li>
-                <li><a href="#">360 Video Gallery</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#VirtualTours">Virtual Tours</a></li>
+                <li><a href="#StreetView">Street View</a></li>
+                <li><a href="#360PhotoGallery">360 Photo Gallery</a></li>
+                <li><a href="#360VideoGallery">360 Video Gallery</a></li>
+                <li><a href="#AboutUs">About Us</a></li>
+                <li><a href="#ContactUs">Contact Us</a></li>
             </ul>
         </nav>
     </header>
@@ -45,15 +45,38 @@
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
-        <section id="tours" class="content-section">
+        <section id="VirtualTours" class="content-section">
             <div class="content-wrapper">
-                <h2>Featured Tours</h2>
+                <p class="kicker">Virtual Tours</p>
+                <h2>Explore Our Work</h2>
+                <div class="card-grid" id="virtual-tours-grid">
+                    <!-- Virtual tour cards will be dynamically inserted here by main.js -->
+                </div>
+            </div>
+        </section>
+
+        <section id="StreetView" class="content-section">
+            <div class="content-wrapper">
+                <h2>Street View</h2>
                 <p>Our featured tours will be displayed here soon!</p>
             </div>
         </section>
 
+        <section id="360PhotoGallery" class="content-section">
+            <div class="content-wrapper">
+                <h2>360 Photo Gallery</h2>
+                <p>Our featured tours will be displayed here soon!</p>
+            </div>
+        </section>
 
-        <section id="about" class="content-section">
+        <section id="360VideoGallery" class="content-section">
+            <div class="content-wrapper">
+                <h2>360 Video Gallery</h2>
+                <p>Our featured tours will be displayed here soon!</p>
+            </div>
+        </section>
+
+        <section id="AboutUs" class="content-section">
             <div class="content-wrapper">
                 <div class="about-intro">
                     <p class="kicker">About Us</p>
@@ -83,7 +106,7 @@
         </section>
     </main>
 
-    <section id="contact" class="contact-section">
+    <section id="ContactUs" class="contact-section">
         <div class="content-wrapper contact-container">
             <!-- Left Column: Contact Details -->
             <div class="contact-details">
@@ -112,13 +135,13 @@
     <footer class="site-footer">
         <div class="footer-links">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Virtual Tours</a></li>
-                <li><a href="#">Street View</a></li>
-                <li><a href="#">360 Photo Gallery</a></li>
-                <li><a href="#">360 Video Gallery</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#VirtualTours">Virtual Tours</a></li>
+                <li><a href="#StreetView">Street View</a></li>
+                <li><a href="#360PhotoGallery">360 Photo Gallery</a></li>
+                <li><a href="#360VideoGallery">360 Video Gallery</a></li>
+                <li><a href="#AboutUs">About Us</a></li>
+                <li><a href="#ContactUs">Contact Us</a></li>
             </ul>
         </div>
         <div class="social-icons">
@@ -144,6 +167,7 @@
         </div>
     </footer>
 
+    <script src="VirtualToursData.js"></script>
     <script src="main.js"></script>
 </body>
 
