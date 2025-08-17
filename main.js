@@ -148,4 +148,26 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // --- Scroll to Top Button Logic ---
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+    if (scrollToTopBtn) {
+        // Show or hide the button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { // Show button after scrolling 300px
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Scroll to the top when the button is clicked
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });

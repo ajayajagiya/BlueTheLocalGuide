@@ -593,6 +593,69 @@ main > .content-section:nth-of-type(even) {
 }
 
 /* =================================
+   Accessibility Utilities
+   ================================= */
+
+/*
+  Class to visually hide an element while keeping it accessible to screen readers.
+  This is useful for adding descriptive text to icons.
+*/
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* =================================
+   "Why Choose Us" / Benefits Section
+   ================================= */
+
+#why-choose-us {
+    background-color: #f9f9f9; /* A light grey to separate it from the section below */
+}
+
+.benefits-grid {
+    display: grid;
+    /* Creates 3 columns on desktop, and wraps to 1 on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.benefit-item {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.benefit-icon {
+    font-size: 3rem; /* Makes the icon large and prominent */
+    color: #09598f; /* Use the main brand color */
+    margin-bottom: 1rem;
+    /* Gradient background for the icon */
+    background: linear-gradient(135deg, #09598f, #007bff);
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    display: inline-block; /* Needed for padding and border-radius to work well */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.benefit-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.benefit-item p {
+    color: #555;
+    line-height: 1.6;
+}
+/* =================================
    Pricing Page Styles
    ================================= */
 
@@ -685,9 +748,16 @@ main > .content-section:nth-of-type(even) {
 .features-list li {
     margin-bottom: 1rem;
     display: flex;
-    align-items: flex-start;
+    align-items: center; /* Align icon and text vertically */
     gap: 10px; /* Space between checkmark and text */
     line-height: 1.4;
+}
+
+.checkmark-icon {
+    width: 1.2em;
+    height: 1.2em;
+    color: #28a745; /* A nice green for success */
+    flex-shrink: 0; /* Prevents the icon from shrinking */
 }
 
 .pricing-btn {
@@ -808,6 +878,41 @@ main > .content-section:nth-of-type(even) {
 
 .faq-item.active .faq-answer {
     max-height: 300px; /* A large enough value to accommodate content */
+}
+
+/* =================================
+   Scroll to Top Button
+   ================================= */
+
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #09598f;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.scroll-to-top-btn:hover {
+    background-color: #07446e;
+    transform: translateY(-3px);
+}
+
+.scroll-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* =================================
