@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         src="${tour.iframeSrc}" 
                         allowfullscreen="" 
                         loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allow="accelerometer; gyroscope">
                     </iframe>
                 </div>
                 <div class="card-content">
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slide.className = 'panorama-slide';
             // Set the width of each slide to be the correct fraction of the wrapper
             slide.style.width = `${100 / totalSlides}%`;
-            slide.innerHTML = `<iframe src="${p.iframeSrc}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+            slide.innerHTML = `<iframe src="${p.iframeSrc}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allow="accelerometer; gyroscope"></iframe>`;
             sliderWrapper.appendChild(slide);
         });
 

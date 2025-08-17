@@ -97,6 +97,12 @@ nav ul li a:hover {
     border-bottom: 2px solid #ffffff;
 }
 
+/* Style for the current page link in the navigation */
+nav ul li a[aria-current="page"] {
+    border-bottom-color: #ffffff; /* Make the underline permanent */
+    cursor: default; /* Indicate it's not meant to be clicked again */
+}
+
 /* Main Content Area */
 main {
     /* Add padding to the top to push content below the fixed header */
@@ -585,6 +591,12 @@ main > .content-section:nth-of-type(even) {
     text-decoration: underline;
 }
 
+/* Style for the current page link in the footer */
+.footer-links a[aria-current="page"] {
+    color: #ffffff;
+    cursor: default;
+}
+
 /* Social media icons section */
 .social-icons {
     display: flex;
@@ -595,26 +607,47 @@ main > .content-section:nth-of-type(even) {
 
 .social-icons a {
     display: inline-block; /* Ensures transforms apply correctly */
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .social-icons a:hover {
-    transform: scale(1.1); /* Slightly enlarge icon on hover */
-    opacity: 0.85;         /* A subtle fade effect on hover */
+    transform: scale(1.1) translateY(-2px); /* Enlarge and lift the icon */
+    filter: brightness(1.1) drop-shadow(0 4px 6px rgba(0,0,0,0.25)); /* Add a pop effect */
 }
 
 .social-icons .material-icons {
     font-size: 48px; /* Adjust size as needed */
-    color: #f0f0f0; /* White color to match footer text */
     vertical-align: middle; /* Helps align icons properly */
 }
 
-/* Optional: If you want your icons to be circular */
-/*
-.social-icons img {
-    border-radius: 50%;
+/* Brand-specific colors for social icons (default state) */
+.social-icons a[title="Google Maps"] .material-icons {
+    /* A four-color conic gradient for a distinct visual effect */
+    background: conic-gradient(from 180deg, #4285F4 0 90deg, #34A853 90deg 180deg, #FBBC05 180deg 270deg, #EA4335 270deg 360deg);
+    -webkit-background-clip: text; /* For Safari/Chrome */
+    background-clip: text;
+    color: transparent; /* Makes the text transparent so the background shows through */
 }
-*/
+
+.social-icons a[title="Google Contributor"] .material-icons {
+    color: #4285f4;
+}
+
+.social-icons a[title="Instagram"] .material-icons {
+    /* A radial gradient that mimics Instagram's logo */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    -webkit-background-clip: text; /* For Safari/Chrome */
+    background-clip: text;
+    color: transparent; /* Makes the text transparent so the background shows through */
+}
+
+.social-icons a[title="YouTube"] .material-icons {
+    color: #ff0000;
+}
+
+.social-icons a[title="Pexels"] .material-icons {
+    color: #05a081;
+}
 
 /* Bottom text section (copyright) */
 .footer-bottom {
