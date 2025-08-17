@@ -68,7 +68,7 @@ nav {
 }
 
 .logo img {
-    height: 12rem; /* Adjust this value to 12rem */
+    height: 4rem; /* Increased size to be more visible within the 4rem header */
     width: auto;
     /* This adds a subtle shadow to make the logo pop from the background */
     filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.6));
@@ -125,8 +125,14 @@ main > .content-section:nth-of-type(even) {
 
 /* New wrapper to constrain the width of the text content inside a full-width section */
 .content-wrapper {
-    max-width: 900px;
+    max-width: 1140px; /* Increased width for a wider layout */
     margin: 0 auto;
+}
+
+/* Specific background for Virtual Tours section to make cards stand out */
+#VirtualTours {
+    /* A beautiful gradient background to make the section pop */
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 
 .content-section h1, .content-section h2 {
@@ -319,9 +325,9 @@ main > .content-section:nth-of-type(even) {
 
 .card-grid {
     display: grid;
-    /* Create 3 columns of equal width */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px; /* Space between cards */
+    /* Create 2 larger columns to make iframe content more visible */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px; /* Increased space between cards */
     margin-top: 40px; /* Space below the section title */
 }
 
@@ -343,8 +349,8 @@ main > .content-section:nth-of-type(even) {
 /* This container makes the iframe responsive */
 .card-iframe-container {
     position: relative;
-    /* 4:3 Aspect Ratio (450 / 600 = 0.75). Use 56.25% for 16:9. */
-    padding-top: 75%;
+    /* 16:9 Aspect Ratio */
+    padding-top: 56.25%;
     width: 100%;
     background-color: #e0e0e0; /* Placeholder color while iframe loads */
 }
@@ -371,16 +377,15 @@ main > .content-section:nth-of-type(even) {
 }
 
 /* Responsive adjustments for the card grid */
-@media (max-width: 992px) {
-    .card-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
-    }
-}
-
 @media (max-width: 768px) {
     .card-grid {
         grid-template-columns: 1fr; /* 1 column for mobile */
     }
+}
+
+.view-more-container {
+    text-align: center;
+    margin-top: 50px; /* Space between the card grid and the button */
 }
 /* =================================
    Footer Styles
