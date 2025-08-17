@@ -540,6 +540,12 @@ main > .content-section:nth-of-type(even) {
     opacity: 0.85;         /* A subtle fade effect on hover */
 }
 
+.social-icons .material-icons {
+    font-size: 48px; /* Adjust size as needed */
+    color: #f0f0f0; /* White color to match footer text */
+    vertical-align: middle; /* Helps align icons properly */
+}
+
 /* Optional: If you want your icons to be circular */
 /*
 .social-icons img {
