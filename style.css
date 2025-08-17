@@ -103,7 +103,7 @@ main {
 
 /* Panorama Container */
 #panorama-container {
-    height: 650px; /* Set a fixed height for the viewer */
+    height: 850px; /* Set a fixed height for the viewer */
     width: 100%;
     background-color: #000; /* Add a background while the iframe loads */
 }
