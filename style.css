@@ -39,7 +39,8 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0); /* Semi-transparent background */
+    /* A solid brand color ensures logo and nav links are always visible */
+    background-color: #09598f;
     z-index: 1000; /* Ensures it stays on top of other content */
     transition: background-color 0.3s ease;
     height: 4rem; /* Give header a fixed height */
@@ -48,7 +49,8 @@ header {
 }
 
 header:hover {
-    background-color: rgb(9, 89, 143); /* Slightly darker deep blue shade for a beautiful look */
+    /* A slightly darker shade on hover provides subtle feedback, consistent with buttons */
+    background-color: #07446e;
 }
 
 nav {
@@ -248,6 +250,16 @@ main > .content-section:nth-of-type(even) {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: #09598f; /* A deep blue to match the brand */
+}
+
+/* A reusable style for subtitles under section headings */
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555; /* A slightly muted text color */
+    max-width: 650px; /* Constrain line length for readability */
+    margin: -10px auto 40px auto; /* Pull it closer to the h2 and add space below */
+    line-height: 1.6;
 }
 
 .about-intro {
@@ -579,7 +591,225 @@ main > .content-section:nth-of-type(even) {
         gap: 15px;
     }
 }
+
+/* =================================
+   Pricing Page Styles
+   ================================= */
+
+/* Adjust card grid for pricing cards which may have more content */
+#pricing .card-grid {
+    /* This allows cards to wrap nicely on different screen sizes */
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    align-items: stretch; /* Make cards in the same row equal height */
+    gap: 30px;
+}
+
+.pricing-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    border-top: 6px solid #09598f; /* Accent color */
+    position: relative; /* Needed for banner positioning */
+    overflow: hidden; /* Hides the part of the banner that goes outside the corner */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the "Most Popular" card and its banner */
+.pricing-card.popular {
+    border-top-color: #ffc107; /* A vibrant gold to highlight */
+    transform: scale(1.03); /* Make it slightly larger */
+}
+
+.pricing-card.popular:hover {
+    transform: scale(1.03) translateY(-5px); /* Combine scale and hover lift */
+}
+
+.popular-banner {
+    position: absolute;
+    top: 36px;
+    right: -40px;
+    transform: rotate(45deg);
+    background-color: #ffc107;
+    color: #333;
+    padding: 5px 40px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.pricing-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.25rem 0;
+}
+
+.pricing-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #09598f;
+    margin: 0 0 1rem 0;
+}
+
+/* Style for the non-numeric price on the custom card */
+.pricing-price.custom-quote {
+    font-size: 2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.pricing-description {
+    color: #555;
+    margin: 0 0 2rem 0;
+    line-height: 1.6;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    flex-grow: 1; /* Pushes bonuses and button to the bottom */
+}
+
+.features-list li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px; /* Space between checkmark and text */
+    line-height: 1.4;
+}
+
+.pricing-btn {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* Shared Bonuses Section below the pricing cards */
+.shared-bonuses {
+    background: #f7faff;
+    border: 1px solid #dde8f5;
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-top: 4rem; /* Space above the bonus box */
+    text-align: center;
+}
+
+.shared-bonuses h3 {
+    font-size: 1.8rem;
+    color: #09598f;
+    margin: 0 0 2rem 0;
+}
+
+.bonus-columns {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    text-align: left;
+}
+
+.bonus-item {
+    flex: 1;
+    max-width: 400px;
+}
+
+.bonus-item h4 {
+    font-size: 1.3rem;
+    color: #333;
+    margin: 0 0 1rem 0;
+}
+
+.bonus-item p, .bonus-item li {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.bonus-item ul {
+    padding-left: 20px;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .bonus-columns {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+}
     
+/* =================================
+   FAQ Accordion Styles
+   ================================= */
+
+.faq-accordion {
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    border-top: 1px solid #e0e0e0;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 1.5rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.faq-question:hover {
+    background-color: #f9f9f9;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #09598f;
+    transition: transform 0.3s ease-in-out;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    padding: 0 1rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+.faq-answer p {
+    margin: 0 0 1.5rem 0;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px; /* A large enough value to accommodate content */
+}
+
 /* =================================
    Responsive Navigation (Mobile Menu)
    ================================= */
