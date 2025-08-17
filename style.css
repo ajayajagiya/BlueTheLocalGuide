@@ -39,7 +39,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
     z-index: 1000; /* Ensures it stays on top of other content */
     transition: background-color 0.3s ease;
     height: 4rem; /* Give header a fixed height */
@@ -48,7 +48,7 @@ header {
 }
 
 header:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(22, 96, 194, 0.8);
 }
 
 nav {
