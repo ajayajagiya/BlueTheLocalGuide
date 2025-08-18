@@ -234,6 +234,192 @@ main > .content-section:nth-of-type(even) {
     background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 
+/* Add this to your style.css file */
+
+/* Styling for the new virtual tour cards */
+.virtual-tour-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensures content respects the border-radius */
+    position: relative; /* Added for positioning context for the title overlay */
+    flex: 0 0 340px; /* Do not grow, do not shrink, base width of 340px */
+    scroll-snap-align: start; /* Align cards to the start of the container when snapping */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.virtual-tour-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.virtual-tour-card .card-text-content {
+    position: absolute; /* Position over the iframe wrapper */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5; /* Ensure it's on top */
+    padding: 1.5rem; /* Adjust padding for overlay */
+    box-sizing: border-box; /* Include padding in width */
+    /* Add a gradient for text readability */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none; /* Allow clicks to pass through to the iframe */
+}
+
+.virtual-tour-card h3 {
+    /* Pull the element up and out to fill the top of the card */
+    margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    font-size: 1.25rem;
+    color: #ffffff;
+    background-color: #09598f; /* The white background you wanted */
+    /* Add padding to create the bar effect */
+    padding: 1rem 1.5rem;
+    /* Ensure consistent height for 1 or 2 lines of text and center it */
+    box-sizing: border-box;
+    line-height: 1.4;
+    min-height: 5.5rem; /* Reserves space for 2 lines + padding */
+    display: flex;
+    align-items: center; /* Vertically centers the title text */
+}
+
+.virtual-tour-card p {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.virtual-tour-card .card-iframe-wrapper {
+    width: 100%;
+    /* Maintain aspect ratio for the iframe container */
+    position: relative;
+    padding-top: 177.78%; /* 9:16 Portrait Aspect Ratio (like YouTube Shorts) */
+    background-color: #f0f0f0; /* Placeholder color while iframe loads */
+}
+
+.virtual-tour-card .card-iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* New wrapper to contain the scrollable area and (soon) navigation buttons */
+.horizontal-scroll-wrapper {
+    position: relative;
+    /* === Manually adjust the position with margins === */
+    margin-top: 40px; /* Adds space between the "Explore Our Work" title and the scroller */
+    margin-bottom: 40px; /* Adds space between the scroller and the "View All Galleries" button */
+}
+
+/*
+   Virtual Tours Horizontal Scroll Container
+   - Use flexbox to create a single row of cards.
+   - Enable horizontal scrolling.
+   - Add padding for aesthetics and scrollbar space.
+   - Improve scroll behavior on touch devices.
+*/
+#virtual-tours-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 24px;
+    padding: 10px; /* Add some padding around the cards */
+    scroll-snap-type: x mandatory; /* Optional: snaps cards into view on scroll */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    /* Hide the scrollbar for a cleaner look, as we'll add buttons */
+    scrollbar-width: none; /* Firefox */
+}
+#virtual-tours-grid::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+}
+
+/*
+   Navigation Arrows for Horizontal Scroll
+   - Positioned absolutely within the relative wrapper.
+   - Vertically centered.
+   - Styled for visibility and interaction.
+*/
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.scroll-arrow:hover {
+    background-color: #ffffff;
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-arrow.prev-arrow {
+    left: 2rem; /* Position inside the full-width viewport */
+}
+
+.scroll-arrow.next-arrow {
+    right: 2rem; /* Position inside the full-width viewport */
+}
+
+/* =================================
+   Responsive Adjustments for Scroller
+   ================================= */
+@media (max-width: 768px) {
+    /* On mobile, transform arrows into large, easy-to-tap vertical bars on the edges */
+    .horizontal-scroll-wrapper .scroll-arrow {
+        top: 0;
+        height: 100%;
+        width: 40px; /* A good tap area */
+        transform: none; /* Reset vertical centering */
+        border-radius: 0; /* Make them rectangular */
+        border: none;
+        background-color: rgba(0, 0, 0, 0.25); /* Subtle but visible overlay */
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 2rem;
+        box-shadow: none;
+    }
+    .horizontal-scroll-wrapper .scroll-arrow:hover {
+        background-color: rgba(0, 0, 0, 0.4); /* Darken on hover/tap */
+        transform: none; /* Override desktop hover transform */
+        box-shadow: none;
+    }
+    .scroll-arrow.prev-arrow {
+        left: -38px;
+    }
+    .scroll-arrow.next-arrow {
+        right: -38px;
+    }
+
+    /* Adjust card size for smaller screens */
+    .virtual-tour-card {
+        flex-basis: 80vw; /* Show one card and a peek of the next */
+    }
+
+    /* Adjust padding and gap for the scroll container on mobile */
+    #virtual-tours-grid {
+        gap: 5px;
+        /* Add padding so cards don't touch the screen edge and define snap position */
+        padding-left: 5px;
+        padding-right: 0px;
+        scroll-padding-inline: 5px; /* Make snap points align with padding */
+    }
+}
+
 .content-section h1, .content-section h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -357,7 +543,6 @@ main > .content-section:nth-of-type(even) {
 /* General button style */
 .btn {
     display: inline-block;
-    margin-top: 25px;
     padding: 12px 28px;
     background-color: #09598f; /* A deep blue to match the brand */
     color: #ffffff;
@@ -498,6 +683,8 @@ main > .content-section:nth-of-type(even) {
     overflow: hidden; /* Ensures content (like the iframe) respects the border-radius */
     display: flex;
     flex-direction: column;
+    flex: 0 0 340px; /* Do not grow, do not shrink, base width of 340px */
+    scroll-snap-align: start; /* Align cards to the start of the container when snapping */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -540,11 +727,6 @@ main > .content-section:nth-of-type(even) {
 @media (max-width: 768px) {
     .card-grid {
         grid-template-columns: 1fr; /* 1 column for mobile */
-    }
-
-    /* Change card aspect ratio to 9:16 for mobile view */
-    .card-iframe-container {
-        padding-top: 177.78%; /* 9:16 Aspect Ratio (16 / 9 * 100) */
     }
 }
 

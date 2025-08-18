@@ -42,7 +42,7 @@
             </div>
             <button class="slider-btn prev-btn" aria-label="Previous Panorama">&#10094;</button>
             <button class="slider-btn next-btn" aria-label="Next Panorama">&#10095;</button>
-            <a href="#VirtualTours" class="scroll-down-btn" aria-label="Scroll to next section">&#8595;</a>
+            <a href="#benefits" class="scroll-down-btn" aria-label="Scroll to next section">&#8595;</a>
         </div>
 
         <section id="benefits" class="content-section">
@@ -76,9 +76,16 @@
             <div class="content-wrapper">
                 <p class="kicker">Virtual Tours</p>
                 <h2>Explore Our Work</h2>
+            </div>
+            <!-- The scroll wrapper is now outside the content-wrapper to be full-width -->
+            <div class="horizontal-scroll-wrapper">
+                <button class="scroll-arrow prev-arrow" id="prev-tour-btn" aria-label="Previous Tour">&#10094;</button>
                 <div class="card-grid" id="virtual-tours-grid">
                     <!-- Virtual tour cards will be dynamically inserted here by main.js -->
                 </div>
+                <button class="scroll-arrow next-arrow" id="next-tour-btn" aria-label="Next Tour">&#10095;</button>
+            </div>
+            <div class="content-wrapper">
                 <div class="view-more-container">
                     <a href="#" class="btn">View All Galleries</a>
                 </div>

@@ -32,27 +32,57 @@ document.addEventListener('DOMContentLoaded', () => {
         virtualTours.forEach(tour => {
             // Create a new div element for the card
             const card = document.createElement('div');
-            card.className = 'card'; // Use the same class as our future CSS
+            card.className = 'virtual-tour-card'; // Use the specific class for tour cards
 
             // Set the inner HTML of the card using a template literal for clarity.
-            // This structure matches the one we will style with CSS.
+            // The title is now placed above the iframe.
             card.innerHTML = `
-                <div class="card-iframe-container">
-                    <iframe 
-                        src="${tour.iframeSrc}" 
-                        allowfullscreen="" 
-                        loading="lazy" 
+                <div class="card-text-content">
+                    <h3>${tour.title}</h3>
+                </div>
+                <div class="card-iframe-wrapper">
+                    <iframe
+                        src="${tour.iframeSrc}"
+                        title="${tour.title}"
+                        allowfullscreen=""
+                        loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
                         allow="accelerometer; gyroscope">
                     </iframe>
                 </div>
-                <div class="card-content">
-                    <h3>${tour.title}</h3>
-                </div>
             `;
-
             // Append the newly created card to the grid container in the HTML
             tourGrid.appendChild(card);
+        });
+    }
+
+    // --- Virtual Tour Scroller Logic ---
+    const tourContainer = document.getElementById('virtual-tours-grid');
+    const prevTourBtn = document.getElementById('prev-tour-btn');
+    const nextTourBtn = document.getElementById('next-tour-btn');
+
+    // Check if all elements for the scroller exist
+    if (tourContainer && prevTourBtn && nextTourBtn) {
+        // Function to calculate the scroll amount based on the first card's width and the gap
+        const getScrollAmount = () => {
+            const firstCard = tourContainer.querySelector('.virtual-tour-card');
+            if (firstCard) {
+                const containerStyles = window.getComputedStyle(tourContainer);
+                // Get the gap value from CSS, with a fallback of 24px
+                const gap = parseFloat(containerStyles.gap) || 24;
+                return firstCard.offsetWidth + gap;
+            }
+            return 364; // Default fallback (340px card + 24px gap)
+        };
+
+        nextTourBtn.addEventListener('click', () => {
+            const scrollAmount = getScrollAmount();
+            tourContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        prevTourBtn.addEventListener('click', () => {
+            const scrollAmount = getScrollAmount();
+            tourContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
     }
 
