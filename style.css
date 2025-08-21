@@ -1004,6 +1004,27 @@ main > .content-section:nth-of-type(even) {
     line-height: 1.6;
 }
 
+.pricing-delivery {
+    color: #555;
+    font-size: 0.9rem;
+    /* Pulls the element up slightly, while maintaining space below */
+    margin: -1rem 0 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f9f9f9;
+    padding: 10px 12px;
+    border-radius: 6px;
+}
+
+.pricing-delivery::before {
+    content: 'schedule'; /* Material Icons name for a clock icon */
+    font-family: 'Material Icons';
+    font-size: 1.2rem;
+    color: #09598f;
+    flex-shrink: 0; /* Prevents icon from shrinking */
+}
+
 .features-list {
     list-style: none;
     padding: 0;
@@ -1084,6 +1105,55 @@ main > .content-section:nth-of-type(even) {
     }
 }
     
+/* =================================
+   Additional Charges Section
+   ================================= */
+
+.charges-grid {
+    display: grid;
+    /* Using auto-fit to create a responsive grid that wraps automatically */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 40px;
+}
+
+.charge-item {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #ffc107; /* Gold accent to match 'popular' card */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    display: flex;
+    align-items: flex-start; /* Align icon to the top of the content */
+    gap: 1rem;
+}
+
+.charge-icon {
+    font-size: 1.5rem; /* Emoji size */
+    line-height: 1.2; /* Adjust line height for better vertical alignment */
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.charge-icon.material-icons {
+    /* Match the accent border for visual consistency */
+    color: #ffc107;
+}
+
+.charge-item strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.charge-item p {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+}
+
 /* =================================
    FAQ Accordion Styles
    ================================= */
@@ -1170,6 +1240,34 @@ main > .content-section:nth-of-type(even) {
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
+
+/* No Internet Popup Styles */
+#no-internet-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent black */
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Ensure it's on top of everything */
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#no-internet-popup.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+
 
 .scroll-to-top-btn:hover {
     background-color: #07446e;

@@ -201,4 +201,29 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // --- No Internet Popup Logic ---
+    const noInternetPopup = document.createElement('div');
+    noInternetPopup.id = 'no-internet-popup';
+    noInternetPopup.textContent = 'No internet connection.';
+    document.body.appendChild(noInternetPopup);
+
+    function updateOnlineStatus() {
+        if (navigator.onLine) {
+            noInternetPopup.classList.remove('show');
+        } else {
+            noInternetPopup.classList.add('show');
+        }
+    }
+
+    // Check initial status and then listen for changes
+    window.addEventListener('load', updateOnlineStatus);
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+
+    // --- Dynamically Update Copyright Year ---
+    const copyrightYearSpan = document.getElementById('copyright-year');
+    if (copyrightYearSpan) {
+        copyrightYearSpan.textContent = new Date().getFullYear();
+    }
 });
