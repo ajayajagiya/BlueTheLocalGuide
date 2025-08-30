@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="card-iframe-wrapper">
                     <iframe
-                        src="${item.iframeSrc}"
+                        data-src="${item.iframeSrc}"
+                        src=""
                         title="${item.title}"
                         allowfullscreen=""
                         loading="lazy"
@@ -181,24 +182,37 @@ document.addEventListener('DOMContentLoaded', () => {
         let autoScrollInterval;
         const totalSlides = panoramas.length;
 
-        // 1. Load panoramas into the slider
-        panoramas.forEach(p => {
+        // 1. Create panorama slides without loading the iframes
+        panoramas.forEach((p, index) => {
             const slide = document.createElement('div');
             slide.className = 'panorama-slide';
-            // Set the width of each slide to be the correct fraction of the wrapper
             slide.style.width = `${100 / totalSlides}%`;
-            slide.innerHTML = `<iframe src="${p.iframeSrc}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allow="accelerometer; gyroscope"></iframe>`;
+            // Use data-src to store the URL and leave src empty initially
+            slide.innerHTML = `<iframe data-src="${p.iframeSrc}" src="" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allow="accelerometer; gyroscope"></iframe>`;
             sliderWrapper.appendChild(slide);
         });
 
         // Set the wrapper width to contain all slides side-by-side
         sliderWrapper.style.width = `${totalSlides * 100}%`; // e.g., 3 slides = 300% width
 
-        // 2. Function to update the slider position
+        // 2. Function to update the slider position and manage iframe loading
         function updateSlider() {
-            // Each slide takes up 100% / totalSlides of the wrapper's width
             const percentage = currentIndex * (100 / totalSlides);
             sliderWrapper.style.transform = `translateX(-${percentage}%)`;
+
+            // Load the current slide's iframe and unload the others
+            const allIframes = sliderWrapper.querySelectorAll('iframe');
+            allIframes.forEach((iframe, index) => {
+                if (index === currentIndex) {
+                    // Load the current slide's iframe if it's not already loaded
+                    if (iframe.dataset.src && !iframe.getAttribute('src')) {
+                        iframe.setAttribute('src', iframe.dataset.src);
+                    }
+                } else {
+                    // Unload all other iframes to free up resources
+                    iframe.setAttribute('src', '');
+                }
+            });
         }
 
         // 3. Functions to handle slide changes
@@ -238,7 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
         panoramaContainer.addEventListener('touchstart', stopAutoScroll, { once: true });
 
         // Start the show!
-        // startAutoScroll(); // Commented out to disable auto-scrolling
+        updateSlider(); // Initial load of the first slide
+        // startAutoScroll(); // Auto-scrolling is currently disabled
     }
 
     // --- FAQ Accordion Logic ---
@@ -308,6 +323,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyrightYearSpan = document.getElementById('copyright-year');
     if (copyrightYearSpan) {
         copyrightYearSpan.textContent = new Date().getFullYear();
+    }
+
+    // --- Lazy Load iFrames in Scrollers using Intersection Observer ---
+    // This prevents all iframes from loading at once, fixing the WebGL context limit error.
+    const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            const card = entry.target.querySelector('.iframe-tour-card');
+            if (!card) return;
+
+            const iframe = card.querySelector('iframe');
+            if (!iframe) return;
+
+            // Do not unload an iframe if its card is currently maximized
+            if (card.classList.contains('maximized')) {
+                return;
+            }
+
+            if (entry.isIntersecting) {
+                // Card is in view: load the iframe if it's not already loaded.
+                if (iframe.dataset.src && !iframe.getAttribute('src')) {
+                    iframe.setAttribute('src', iframe.dataset.src);
+                }
+            } else {
+                // Card is out of view: unload the iframe to free up resources.
+                if (iframe.getAttribute('src')) {
+                    iframe.setAttribute('src', '');
+                }
+            }
+        });
+    }, { rootMargin: '0px 0px 200px 0px' }); // Pre-load cards 200px before they enter the viewport
+
+    const placeholders = document.querySelectorAll('.card-placeholder');
+    if (placeholders.length > 0) {
+        placeholders.forEach(placeholder => {
+            lazyLoadObserver.observe(placeholder);
+        });
     }
 
     // --- Fullscreen Modal Logic for Tour Cards ---
