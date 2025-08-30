@@ -22,51 +22,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Dynamically Load Virtual Tour Cards ---
-    const tourGrid = document.getElementById('virtual-tours-grid');
-    if (tourGrid && typeof virtualToursData !== 'undefined') {
-        // Loop through each tour object in the virtualTours array
-        virtualToursData.forEach(tour => {
-            // Create a new div element for the card
-            const card = document.createElement('div');
-            card.className = 'iframe-tour-card'; // Use the specific class for tour cards
+    // --- Refactored Card Generation ---
 
-            // Set the inner HTML of the card using a template literal for clarity.
-            // The title is now placed above the iframe.
-            card.innerHTML = `
-                <div class="card-text-content">
-                    <h3>${tour.title}</h3>
-                </div>
-                <div class="card-iframe-wrapper">
-                    <iframe
-                        src="${tour.iframeSrc}"
-                        title="${tour.title}"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        allow="accelerometer; gyroscope">
-                    </iframe>
-                </div>
-            `;
-            // Append the newly created card to the grid container in the HTML
-            tourGrid.appendChild(card);
-        });
-    }
+    /**
+     * Creates an HTML card element for a tour or gallery item.
+     * @param {object} item - The data object for the card (e.g., from virtualToursData).
+     * @returns {HTMLElement} The generated card element.
+     */
+    function createTourCard(item) {
+        // Create a wrapper to hold the card's place in the flex layout, preventing reflow on maximize.
+        const placeholder = document.createElement('div');
+        placeholder.className = 'card-placeholder';
 
-    // --- Dynamically Load Street View Cards (Gallery Page) ---
-    const streetViewGrid = document.getElementById('streetview-grid');
-    // Check if the grid container and the data from StreetViewData.js exist
-    if (streetViewGrid && typeof streetViewData !== 'undefined') {
-        // Loop through each item in the streetViewData array
-        streetViewData.forEach(item => {
-            // Create a new div element for the card
-            const card = document.createElement('div');
-            // Use the specific 'iframe-tour-card' style to match the virtual tour cards
-            card.className = 'iframe-tour-card';
+        const card = document.createElement('div');
+        card.className = 'iframe-tour-card';
 
-            // Set the inner HTML of the card to match the virtual tour card structure,
-            // with the title displayed as a bar on top of the iframe.
-            card.innerHTML = `
+        // Set the inner HTML of the actual card.
+        card.innerHTML = `
                 <div class="card-text-content">
                     <h3>${item.title}</h3>
                 </div>
@@ -80,44 +52,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         allow="accelerometer; gyroscope">
                     </iframe>
                 </div>
+            <button class="card-maximize-btn" aria-label="Maximize view" title="Maximize">
+                <span class="material-icons">fullscreen</span>
+            </button>
             `;
-            // Append the newly created card to the grid container
-            streetViewGrid.appendChild(card);
-        });
+
+        // Append the card to the placeholder and return the placeholder.
+        placeholder.appendChild(card);
+        return placeholder;
     }
 
-    // --- Dynamically Load 360 Photos Cards (Gallery Page) ---
-    const photos360Grid = document.getElementById('photos360-grid');
-    // Check if the grid container and the data from images360Data.js exist
-    if (photos360Grid && typeof images360Data !== 'undefined') {
-        // Loop through each item in the images360Data array
-        images360Data.forEach(item => {
-            // Create a new div element for the card
-            const card = document.createElement('div');
-            // Use the specific 'iframe-tour-card' style to match the virtual tour cards
-            card.className = 'iframe-tour-card';
-
-            // Set the inner HTML of the card to match the virtual tour card structure,
-            // with the title displayed as a bar on top of the iframe.
-            card.innerHTML = `
-                <div class="card-text-content">
-                    <h3>${item.title}</h3>
-                </div>
-                <div class="card-iframe-wrapper">
-                    <iframe
-                        src="${item.iframeSrc}"
-                        title="${item.title}"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        allow="accelerometer; gyroscope">
-                    </iframe>
-                </div>
-            `;
-            // Append the newly created card to the grid container
-            photos360Grid.appendChild(card);
-        });
+    /**
+     * Populates a grid container with cards generated from a data array.
+     * @param {HTMLElement} gridElement - The container element to append cards to.
+     * @param {Array} data - The array of data objects.
+     */
+    function populateGrid(gridElement, data) {
+        if (gridElement && typeof data !== 'undefined' && data.length > 0) {
+            data.forEach(item => {
+                const cardWrapper = createTourCard(item);
+                gridElement.appendChild(cardWrapper);
+            });
+        }
     }
+
+    // --- Dynamically Load All Tour/Gallery Cards ---
+    populateGrid(document.getElementById('virtual-tours-grid'), typeof virtualToursData !== 'undefined' ? virtualToursData : []);
+    populateGrid(document.getElementById('streetview-grid'), typeof streetViewData !== 'undefined' ? streetViewData : []);
+    populateGrid(document.getElementById('photos360-grid'), typeof images360Data !== 'undefined' ? images360Data : []);
 
     // --- Virtual Tour Scroller Logic ---
     const tourContainer = document.getElementById('virtual-tours-grid');
@@ -128,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (tourContainer && prevTourBtn && nextTourBtn) {
         // Function to calculate the scroll amount based on the first card's width and the gap
         const getScrollAmount = () => {
-            const firstCard = tourContainer.querySelector('.iframe-tour-card');
+            const firstCard = tourContainer.querySelector('.card-placeholder');
             if (firstCard) {
                 const containerStyles = window.getComputedStyle(tourContainer);
                 // Get the gap value from CSS, with a fallback of 24px
@@ -159,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Function to calculate how much to scroll
         const getScrollAmount = () => {
             // Find the first card to measure its width
-            const firstCard = streetViewContainer.querySelector('.iframe-tour-card');
+            const firstCard = streetViewContainer.querySelector('.card-placeholder');
             if (firstCard) {
                 const containerStyles = window.getComputedStyle(streetViewContainer);
                 // The gap for .card-grid is 40px, but we'll use 24px for a flex scroller
@@ -188,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Function to calculate how much to scroll
         const getScrollAmount = () => {
             // Find the first card to measure its width
-            const firstCard = photos360Container.querySelector('.iframe-tour-card');
+            const firstCard = photos360Container.querySelector('.card-placeholder');
             if (firstCard) {
                 const containerStyles = window.getComputedStyle(photos360Container);
                 // The gap for .card-grid is 40px, but we'll use 24px for a flex scroller
@@ -347,4 +309,68 @@ document.addEventListener('DOMContentLoaded', () => {
     if (copyrightYearSpan) {
         copyrightYearSpan.textContent = new Date().getFullYear();
     }
+
+    // --- Fullscreen Modal Logic for Tour Cards ---
+    document.body.addEventListener('click', (event) => {
+        const maximizeBtn = event.target.closest('.card-maximize-btn');
+
+        if (maximizeBtn) {
+            const card = maximizeBtn.closest('.iframe-tour-card');
+            // Prevent clicks while the card is in the process of minimizing
+            if (!card || card.classList.contains('minimizing')) return;
+
+            const icon = maximizeBtn.querySelector('.material-icons');
+            // Find the grid container by looking for the closest '.card-grid' ancestor.
+            const gridContainer = card.closest('.card-grid');
+            const isMaximized = card.classList.contains('maximized');
+
+            if (isMaximized) {
+                // --- START MINIMIZING ---
+                // Add class to trigger the fade-out animation
+                card.classList.add('minimizing');
+
+                // Listen for the animation to finish
+                card.addEventListener('animationend', () => {
+                    // --- FINISH MINIMIZING ---
+                    // Clean up all modal-related classes
+                    card.classList.remove('maximized');
+                    card.classList.remove('minimizing');
+                    document.body.classList.remove('modal-open');
+
+                    // Restore the button to its "maximize" state
+                    icon.textContent = 'fullscreen';
+                    maximizeBtn.setAttribute('aria-label', 'Maximize view');
+                    maximizeBtn.setAttribute('title', 'Maximize');
+
+                    // Restore the saved scroll position of the carousel
+                    if (gridContainer && gridContainer.dataset.scrollPosition) {
+                        gridContainer.scrollTo({
+                            left: parseFloat(gridContainer.dataset.scrollPosition),
+                            behavior: 'auto'
+                        });
+                    }
+                }, { once: true }); // The listener removes itself after running once
+            } else {
+                // --- MAXIMIZING ---
+                document.body.classList.add('modal-open');
+                card.classList.add('maximized');
+
+                icon.textContent = 'fullscreen_exit';
+                maximizeBtn.setAttribute('aria-label', 'Minimize view');
+                maximizeBtn.setAttribute('title', 'Minimize');
+
+                if (gridContainer) {
+                    gridContainer.dataset.scrollPosition = gridContainer.scrollLeft;
+                }
+            }
+        }
+    });
+
+    // Add listener for 'Escape' key to close the modal
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && document.body.classList.contains('modal-open')) {
+            // Find the active modal and simulate a click on its button to close it
+            document.querySelector('.iframe-tour-card.maximized .card-maximize-btn')?.click();
+        }
+    });
 });

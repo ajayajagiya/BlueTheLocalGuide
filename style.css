@@ -1,7 +1,19 @@
-/* Animation Keyframes for Page Transitions */
+/* Animation Keyframes */
 @keyframes fadeIn {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+/* Keyframe for the modal fade-in effect */
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* Keyframe for the modal fade-out effect */
+@keyframes fadeOutModal {
+    from { opacity: 1; transform: scale(1); }
+    to   { opacity: 0; transform: scale(0.95); }
 }
 
 /* Basic Reset and Body Styles */
@@ -31,6 +43,11 @@ body {
 body.fading-out {
     opacity: 0;
     transition: opacity 0.4s ease-in-out;
+}
+
+/* This class is added to the body to prevent scrolling when a modal is open */
+body.modal-open {
+    overflow: hidden;
 }
 
 /* Header and Navigation Bar */
@@ -234,7 +251,16 @@ main > .content-section:nth-of-type(even) {
     background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 
-/* Add this to your style.css file */
+/*
+  The placeholder holds the card's spot in the flex grid.
+  This prevents the layout from shifting when the card itself is maximized.
+*/
+.card-placeholder {
+    /* These properties are moved from .iframe-tour-card */
+    flex: 0 0 340px; /* Do not grow, do not shrink, base width of 340px */
+    scroll-snap-align: start; /* Align cards to the start of the container when snapping */
+    position: relative; /* For containing the card */
+}
 
 /* Styling for the new virtual tour cards */
 .iframe-tour-card {
@@ -242,10 +268,11 @@ main > .content-section:nth-of-type(even) {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden; /* Ensures content respects the border-radius */
-    position: relative; /* Added for positioning context for the title overlay */
-    flex: 0 0 340px; /* Do not grow, do not shrink, base width of 340px */
-    scroll-snap-align: start; /* Align cards to the start of the container when snapping */
+    position: relative; /* Will become 'fixed' when maximized */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* The card should fill its placeholder */
+    width: 100%;
+    height: 100%;
 }
 
 .iframe-tour-card:hover {
@@ -305,6 +332,77 @@ main > .content-section:nth-of-type(even) {
     width: 100%;
     height: 100%;
     border: 0;
+}
+
+/* Styles for the card's maximize button */
+.card-maximize-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 12px;
+    background-color: rgba(9, 89, 143, 0.8); /* Match brand color */
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px; /* Rounded corners for a square shape */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 6; /* Above iframe, below title overlay if it had pointer events */
+    transition: all 0.3s ease;
+    opacity: 0.85;
+}
+
+.card-maximize-btn:hover {
+    background-color: #07446e; /* Darker brand color on hover */
+    transform: scale(1.1);
+    opacity: 1;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.card-maximize-btn .material-icons {
+    font-size: 24px;
+}
+
+/* --- Styles for Maximized (Fullscreen) Card View --- */
+
+.iframe-tour-card.maximized {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000; /* Ensure it's on top of everything */
+    border-radius: 0;
+    background-color: #000;
+    animation: fadeInModal 0.4s ease-in-out; /* Add a smoother, slightly longer animation */
+}
+
+/* Class to trigger the fade-out animation */
+.iframe-tour-card.minimizing {
+    animation: fadeOutModal 0.4s ease-in-out forwards; /* Match the fade-in animation */
+}
+
+/* When maximized, the iframe wrapper should fill the entire screen */
+.iframe-tour-card.maximized .card-iframe-wrapper {
+    padding-top: 0; /* Remove the aspect-ratio padding */
+    height: 100%;
+}
+
+/* Adjust the title overlay for fullscreen mode */
+.iframe-tour-card.maximized .card-text-content {
+    /* The h3 now has a solid background, so this gradient is not needed. */
+    background: none;
+}
+
+/* Override the title bar style for fullscreen */
+.iframe-tour-card.maximized h3 {
+    /* Let it inherit the theme color from the base .iframe-tour-card h3 style */
+    min-height: auto;
+    /* Use negative margins to make it a full-width bar again */
+    margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    padding: 1rem 1.5rem; /* Give it some internal padding */
 }
 
 /* New wrapper to contain the scrollable area and (soon) navigation buttons */
@@ -409,8 +507,8 @@ main > .content-section:nth-of-type(even) {
         right: -38px;
     }
 
-    /* Adjust card size for smaller screens */
-    .iframe-tour-card {
+    /* Adjust placeholder size for smaller screens, which in turn sizes the card */
+    .card-placeholder {
         flex-basis: 80vw; /* Show one card and a peek of the next */
     }
 
