@@ -24,15 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Dynamically Load Virtual Tour Cards ---
     const tourGrid = document.getElementById('virtual-tours-grid');
-
-    // Check if the grid container and the data from VirtualToursData.js exist.
-    // The 'virtualTours' variable is available globally because VirtualToursData.js is loaded before this script.
-    if (tourGrid && typeof virtualTours !== 'undefined') {
+    if (tourGrid && typeof virtualToursData !== 'undefined') {
         // Loop through each tour object in the virtualTours array
-        virtualTours.forEach(tour => {
+        virtualToursData.forEach(tour => {
             // Create a new div element for the card
             const card = document.createElement('div');
-            card.className = 'virtual-tour-card'; // Use the specific class for tour cards
+            card.className = 'iframe-tour-card'; // Use the specific class for tour cards
 
             // Set the inner HTML of the card using a template literal for clarity.
             // The title is now placed above the iframe.
@@ -56,6 +53,72 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Dynamically Load Street View Cards (Gallery Page) ---
+    const streetViewGrid = document.getElementById('streetview-grid');
+    // Check if the grid container and the data from StreetViewData.js exist
+    if (streetViewGrid && typeof streetViewData !== 'undefined') {
+        // Loop through each item in the streetViewData array
+        streetViewData.forEach(item => {
+            // Create a new div element for the card
+            const card = document.createElement('div');
+            // Use the specific 'iframe-tour-card' style to match the virtual tour cards
+            card.className = 'iframe-tour-card';
+
+            // Set the inner HTML of the card to match the virtual tour card structure,
+            // with the title displayed as a bar on top of the iframe.
+            card.innerHTML = `
+                <div class="card-text-content">
+                    <h3>${item.title}</h3>
+                </div>
+                <div class="card-iframe-wrapper">
+                    <iframe
+                        src="${item.iframeSrc}"
+                        title="${item.title}"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allow="accelerometer; gyroscope">
+                    </iframe>
+                </div>
+            `;
+            // Append the newly created card to the grid container
+            streetViewGrid.appendChild(card);
+        });
+    }
+
+    // --- Dynamically Load 360 Photos Cards (Gallery Page) ---
+    const photos360Grid = document.getElementById('photos360-grid');
+    // Check if the grid container and the data from images360Data.js exist
+    if (photos360Grid && typeof images360Data !== 'undefined') {
+        // Loop through each item in the images360Data array
+        images360Data.forEach(item => {
+            // Create a new div element for the card
+            const card = document.createElement('div');
+            // Use the specific 'iframe-tour-card' style to match the virtual tour cards
+            card.className = 'iframe-tour-card';
+
+            // Set the inner HTML of the card to match the virtual tour card structure,
+            // with the title displayed as a bar on top of the iframe.
+            card.innerHTML = `
+                <div class="card-text-content">
+                    <h3>${item.title}</h3>
+                </div>
+                <div class="card-iframe-wrapper">
+                    <iframe
+                        src="${item.iframeSrc}"
+                        title="${item.title}"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allow="accelerometer; gyroscope">
+                    </iframe>
+                </div>
+            `;
+            // Append the newly created card to the grid container
+            photos360Grid.appendChild(card);
+        });
+    }
+
     // --- Virtual Tour Scroller Logic ---
     const tourContainer = document.getElementById('virtual-tours-grid');
     const prevTourBtn = document.getElementById('prev-tour-btn');
@@ -65,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (tourContainer && prevTourBtn && nextTourBtn) {
         // Function to calculate the scroll amount based on the first card's width and the gap
         const getScrollAmount = () => {
-            const firstCard = tourContainer.querySelector('.virtual-tour-card');
+            const firstCard = tourContainer.querySelector('.iframe-tour-card');
             if (firstCard) {
                 const containerStyles = window.getComputedStyle(tourContainer);
                 // Get the gap value from CSS, with a fallback of 24px
@@ -83,6 +146,64 @@ document.addEventListener('DOMContentLoaded', () => {
         prevTourBtn.addEventListener('click', () => {
             const scrollAmount = getScrollAmount();
             tourContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+    }
+
+    // --- Street View Scroller Logic (Gallery Page) ---
+    const streetViewContainer = document.getElementById('streetview-grid');
+    const prevStreetBtn = document.getElementById('prev-street-btn');
+    const nextStreetBtn = document.getElementById('next-street-btn');
+
+    // Check if all elements for this scroller exist
+    if (streetViewContainer && prevStreetBtn && nextStreetBtn) {
+        // Function to calculate how much to scroll
+        const getScrollAmount = () => {
+            // Find the first card to measure its width
+            const firstCard = streetViewContainer.querySelector('.iframe-tour-card');
+            if (firstCard) {
+                const containerStyles = window.getComputedStyle(streetViewContainer);
+                // The gap for .card-grid is 40px, but we'll use 24px for a flex scroller
+                const gap = parseFloat(containerStyles.gap) || 24;
+                return firstCard.offsetWidth + gap;
+            }
+            return 364; // Default fallback (340px card width + 24px gap)
+        };
+
+        nextStreetBtn.addEventListener('click', () => {
+            streetViewContainer.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
+
+        prevStreetBtn.addEventListener('click', () => {
+            streetViewContainer.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+    }
+
+    // --- 360 Photos Scroller Logic (Gallery Page) ---
+    const photos360Container = document.getElementById('photos360-grid');
+    const prevPhotos360Btn = document.getElementById('prev-photos360-btn');
+    const nextPhotos360Btn = document.getElementById('next-photos360-btn');
+
+    // Check if all elements for this scroller exist
+    if (photos360Container && prevPhotos360Btn && nextPhotos360Btn) {
+        // Function to calculate how much to scroll
+        const getScrollAmount = () => {
+            // Find the first card to measure its width
+            const firstCard = photos360Container.querySelector('.iframe-tour-card');
+            if (firstCard) {
+                const containerStyles = window.getComputedStyle(photos360Container);
+                // The gap for .card-grid is 40px, but we'll use 24px for a flex scroller
+                const gap = parseFloat(containerStyles.gap) || 24;
+                return firstCard.offsetWidth + gap;
+            }
+            return 364; // Default fallback (340px card width + 24px gap)
+        };
+
+        nextPhotos360Btn.addEventListener('click', () => {
+            photos360Container.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
+
+        prevPhotos360Btn.addEventListener('click', () => {
+            photos360Container.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
         });
     }
 
@@ -155,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
         panoramaContainer.addEventListener('touchstart', stopAutoScroll, { once: true });
 
         // Start the show!
-        startAutoScroll();
+        // startAutoScroll(); // Commented out to disable auto-scrolling
     }
 
     // --- FAQ Accordion Logic ---

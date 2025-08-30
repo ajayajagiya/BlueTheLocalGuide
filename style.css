@@ -178,7 +178,7 @@ main {
 
 .scroll-down-btn {
     position: absolute;
-    bottom: 30px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -237,7 +237,7 @@ main > .content-section:nth-of-type(even) {
 /* Add this to your style.css file */
 
 /* Styling for the new virtual tour cards */
-.virtual-tour-card {
+.iframe-tour-card {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -248,12 +248,12 @@ main > .content-section:nth-of-type(even) {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.virtual-tour-card:hover {
+.iframe-tour-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.virtual-tour-card .card-text-content {
+.iframe-tour-card .card-text-content {
     position: absolute; /* Position over the iframe wrapper */
     top: 0;
     left: 0;
@@ -266,7 +266,7 @@ main > .content-section:nth-of-type(even) {
     pointer-events: none; /* Allow clicks to pass through to the iframe */
 }
 
-.virtual-tour-card h3 {
+.iframe-tour-card h3 {
     /* Pull the element up and out to fill the top of the card */
     margin: -1.5rem -1.5rem 1.5rem -1.5rem;
     font-size: 1.25rem;
@@ -282,7 +282,7 @@ main > .content-section:nth-of-type(even) {
     align-items: center; /* Vertically centers the title text */
 }
 
-.virtual-tour-card p {
+.iframe-tour-card p {
     margin-top: 0;
     margin-bottom: 0;
     color: #666;
@@ -290,7 +290,7 @@ main > .content-section:nth-of-type(even) {
     line-height: 1.5;
 }
 
-.virtual-tour-card .card-iframe-wrapper {
+.iframe-tour-card .card-iframe-wrapper {
     width: 100%;
     /* Maintain aspect ratio for the iframe container */
     position: relative;
@@ -298,7 +298,7 @@ main > .content-section:nth-of-type(even) {
     background-color: #f0f0f0; /* Placeholder color while iframe loads */
 }
 
-.virtual-tour-card .card-iframe-wrapper iframe {
+.iframe-tour-card .card-iframe-wrapper iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -322,17 +322,21 @@ main > .content-section:nth-of-type(even) {
    - Add padding for aesthetics and scrollbar space.
    - Improve scroll behavior on touch devices.
 */
-#virtual-tours-grid {
+/* Use ID for higher specificity to ensure flex layout for scrollers */
+#virtual-tours-grid,
+#streetview-grid,
+#photos360-grid {
     display: flex;
     overflow-x: auto;
     gap: 24px;
     padding: 10px; /* Add some padding around the cards */
     scroll-snap-type: x mandatory; /* Optional: snaps cards into view on scroll */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    /* Hide the scrollbar for a cleaner look, as we'll add buttons */
     scrollbar-width: none; /* Firefox */
 }
-#virtual-tours-grid::-webkit-scrollbar {
+#virtual-tours-grid::-webkit-scrollbar,
+#streetview-grid::-webkit-scrollbar,
+#photos360-grid::-webkit-scrollbar {
     display: none; /* Hide scrollbar for Chrome, Safari, Opera */
 }
 
@@ -406,12 +410,14 @@ main > .content-section:nth-of-type(even) {
     }
 
     /* Adjust card size for smaller screens */
-    .virtual-tour-card {
+    .iframe-tour-card {
         flex-basis: 80vw; /* Show one card and a peek of the next */
     }
 
     /* Adjust padding and gap for the scroll container on mobile */
-    #virtual-tours-grid {
+    #virtual-tours-grid,
+    #streetview-grid,
+    #photos360-grid {
         gap: 5px;
         /* Add padding so cards don't touch the screen edge and define snap position */
         padding-left: 5px;

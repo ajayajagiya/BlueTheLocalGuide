@@ -1,10 +1,4 @@
-// This file contains the data for the Virtual Tours section.
-// To add, remove, or edit a virtual tour, simply edit the list below.
-
-// IMPORTANT: Make sure to replace the placeholder `iframeSrc` values
-// with the correct Google Maps embed URL for each location.
-
-const virtualToursData = [
+const streetViewData = [
   {
     title: "Retro Bistro : The Fine Multi Cuisine Restaurant.",
     iframeSrc: "https://www.google.com/maps/embed?pb=!4v1649231962201!6m8!1m7!1sCAoSLEFGMVFpcFBJTnJtR19BVkpHYmE4Y0tST1o0aExqUTZhVERuUS0waTlTa3FH!2m2!1d22.3078204!2d73.16408779999999!3f211.87789790992286!4f-6.864679630696017!5f0.4000000000000002"
@@ -30,4 +24,3 @@ const virtualToursData = [
     iframeSrc: "https://www.google.com/maps/embed?pb=!4v1683824556656!6m8!1m7!1sCAoSLEFGMVFpcE1WU1kzeGR2X1VycENsQ2J6RUVLY2pVQUdsdW9ZRXZDYXlVVVhK!2m2!1d22.28992274!2d73.17030684!3f24.925074692909668!4f6.634923952168762!5f0.4000000000000002"
   }
 ];
-
