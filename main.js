@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     populateGrid(document.getElementById('virtual-tours-grid'), typeof virtualToursData !== 'undefined' ? virtualToursData : []);
     populateGrid(document.getElementById('streetview-grid'), typeof streetViewData !== 'undefined' ? streetViewData : []);
     populateGrid(document.getElementById('photos360-grid'), typeof images360Data !== 'undefined' ? images360Data : []);
+    populateGrid(document.getElementById('videos360-grid'), typeof videos360Data !== 'undefined' ? videos360Data : []);
 
     // --- Virtual Tour Scroller Logic ---
     const tourContainer = document.getElementById('virtual-tours-grid');
@@ -167,6 +168,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         prevPhotos360Btn.addEventListener('click', () => {
             photos360Container.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+    }
+
+    // --- Video 360 Scroller Logic ---
+    const videos360Container = document.getElementById('videos360-grid');
+    const prevVideos360Btn = document.getElementById('prev-videos360-btn');
+    const nextVideos360Btn = document.getElementById('next-videos360-btn');
+
+    // Check if all elements for the scroller exist
+    if (videos360Container && prevVideos360Btn && nextVideos360Btn) {
+        // Function to calculate the scroll amount based on the first card's width and the gap
+        const getScrollAmount = () => {
+            const firstCard = videos360Container.querySelector('.card-placeholder');
+            if (firstCard) {
+                const containerStyles = window.getComputedStyle(videos360Container);
+                // Get the gap value from CSS, with a fallback of 24px
+                const gap = parseFloat(containerStyles.gap) || 24;
+                return firstCard.offsetWidth + gap;
+            }
+            return 364; // Default fallback (340px card + 24px gap)
+        };
+
+        nextVideos360Btn.addEventListener('click', () => {
+            const scrollAmount = getScrollAmount();
+            videos360Container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        prevVideos360Btn.addEventListener('click', () => {
+            const scrollAmount = getScrollAmount();
+            videos360Container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
     }
 

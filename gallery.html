@@ -35,7 +35,27 @@
      
      <main>
         
-        <section id="photos360" class="content-section">
+        <section id="videos360" class="content-section">
+            <div class="content-wrapper">
+                <p class="kicker">360° Video</p>
+                <h2>Experience Locations in Motion</h2>
+                <p class="section-subtitle">Dive into our collection of immersive 360-degree videos. Feel like you're really there.</p>
+            </div>
+            <!-- The scroll wrapper is now outside the content-wrapper to be full-width -->
+            <div class="horizontal-scroll-wrapper">
+                <button class="scroll-arrow prev-arrow" id="prev-videos360-btn" aria-label="Previous Video">
+                    <span class="material-icons">chevron_left</span>
+                </button>
+                <div class="card-grid" id="videos360-grid">
+                    <!-- Virtual Tour cards will be dynamically inserted here -->
+                </div>
+                <button class="scroll-arrow next-arrow" id="next-videos360-btn" aria-label="Next Video">
+                    <span class="material-icons">chevron_right</span>
+                </button>
+            </div>
+         </section>
+
+         <section id="photos360" class="content-section">
             <div class="content-wrapper">
                 <p class="kicker">360° Photos</p>
                 <h2>Immerse Yourself in Every Angle</h2>
@@ -138,6 +158,7 @@
  
      <script src="Images360Data.js"></script>
      <script src="StreetViewData.js"></script>
+     <script src="Video360Data.js"></script>
      <script src="VirtualToursData.js"></script>
      <!-- main.js is included for shared functionality like the mobile navigation menu and scroll-to-top button -->
      <script src="main.js"></script>

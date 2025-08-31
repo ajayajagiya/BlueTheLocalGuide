@@ -425,7 +425,8 @@ main > .content-section:nth-of-type(even) {
 /* Use ID for higher specificity to ensure flex layout for scrollers */
 #virtual-tours-grid,
 #streetview-grid,
-#photos360-grid {
+#photos360-grid,
+#videos360-grid {
     display: flex;
     overflow-x: auto;
     gap: 24px;
@@ -436,7 +437,8 @@ main > .content-section:nth-of-type(even) {
 }
 #virtual-tours-grid::-webkit-scrollbar,
 #streetview-grid::-webkit-scrollbar,
-#photos360-grid::-webkit-scrollbar {
+#photos360-grid::-webkit-scrollbar,
+#videos360-grid::-webkit-scrollbar {
     display: none; /* Hide scrollbar for Chrome, Safari, Opera */
 }
 
@@ -521,7 +523,8 @@ main > .content-section:nth-of-type(even) {
     /* Adjust padding and gap for the scroll container on mobile */
     #virtual-tours-grid,
     #streetview-grid,
-    #photos360-grid {
+    #photos360-grid,
+    #videos360-grid {
         gap: 5px;
         /* Add padding so cards don't touch the screen edge and define snap position */
         padding-left: 5px;
