@@ -234,15 +234,16 @@ document.addEventListener('DOMContentLoaded', () => {
             // Load the current slide's iframe and unload the others
             const allIframes = sliderWrapper.querySelectorAll('iframe');
             allIframes.forEach((iframe, index) => {
-                if (index === currentIndex) {
+                if (index === currentIndex || index === ((currentIndex - 1 + totalSlides) % totalSlides) || index === currentIndex + 1 ) {
                     // Load the current slide's iframe if it's not already loaded
                     if (iframe.dataset.src && !iframe.getAttribute('src')) {
                         iframe.setAttribute('src', iframe.dataset.src);
                     }
-                } else {
-                    // Unload all other iframes to free up resources
-                    iframe.setAttribute('src', '');
-                }
+                } 
+                // else {
+                //     // Unload all other iframes to free up resources
+                //     iframe.setAttribute('src', '');
+                // }
             });
         }
 
