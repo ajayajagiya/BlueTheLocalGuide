@@ -126,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const firstCard = streetViewContainer.querySelector('.card-placeholder');
             if (firstCard) {
                 const containerStyles = window.getComputedStyle(streetViewContainer);
-                // The gap for .card-grid is 40px, but we'll use 24px for a flex scroller
                 const gap = parseFloat(containerStyles.gap) || 24;
                 return firstCard.offsetWidth + gap;
             }
@@ -155,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const firstCard = photos360Container.querySelector('.card-placeholder');
             if (firstCard) {
                 const containerStyles = window.getComputedStyle(photos360Container);
-                // The gap for .card-grid is 40px, but we'll use 24px for a flex scroller
                 const gap = parseFloat(containerStyles.gap) || 24;
                 return firstCard.offsetWidth + gap;
             }
@@ -403,7 +401,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!card || card.classList.contains('minimizing')) return;
 
             const icon = maximizeBtn.querySelector('.material-icons');
-            // Find the grid container by looking for the closest '.card-grid' ancestor.
             const gridContainer = card.closest('.card-grid');
             const isMaximized = card.classList.contains('maximized');
 

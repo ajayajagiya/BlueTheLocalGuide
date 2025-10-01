@@ -1,72 +1,57 @@
-/* Animation Keyframes */
 @keyframes fadeIn {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
 
-/* Keyframe for the modal fade-in effect */
 @keyframes fadeInModal {
     from { opacity: 0; transform: scale(0.95); }
     to   { opacity: 1; transform: scale(1); }
 }
 
-/* Keyframe for the modal fade-out effect */
 @keyframes fadeOutModal {
     from { opacity: 1; transform: scale(1); }
     to   { opacity: 0; transform: scale(0.95); }
 }
 
-/* Basic Reset and Body Styles */
 body, html {
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+    scroll-behavior: smooth; 
 }
 
-/*
-   Apply a fade-in animation on page load.
-   This is more robust than starting with opacity: 0, as the content
-   is always accessible even if animations or JS fail.
-*/
 body {
     opacity: 1;
     animation: fadeIn 0.4s ease-in-out;
 }
 
-/*
-   This class will be added by JavaScript to trigger the fade-out
-   before navigating to another page.
-*/
 body.fading-out {
     opacity: 0;
     transition: opacity 0.4s ease-in-out;
 }
 
-/* This class is added to the body to prevent scrolling when a modal is open */
 body.modal-open {
     overflow: hidden;
 }
 
-/* Header and Navigation Bar */
 header {
-    position: fixed; /* Sticks the header to the top */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
-    /* A solid brand color ensures logo and nav links are always visible */
+    
     background-color: #09598f;
-    z-index: 1000; /* Ensures it stays on top of other content */
+    z-index: 1000; 
     transition: background-color 0.3s ease;
-    height: 4rem; /* Give header a fixed height */
-    display: flex; /* Use flexbox to center nav content vertically */
+    height: 4rem; 
+    display: flex; 
     align-items: center;
 }
 
 header:hover {
-    /* A slightly darker shade on hover provides subtle feedback, consistent with buttons */
+    
     background-color: #07446e;
 }
 
@@ -74,8 +59,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem; /* Remove vertical padding as header now controls it */
-    width: 100%; /* Make nav take full width of header */
+    padding: 0 2rem; 
+    width: 100%; 
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -87,9 +72,9 @@ nav {
 }
 
 .logo img {
-    height: 4rem; /* Increased size to be more visible within the 4rem header */
+    height: 4rem; 
     width: auto;
-    /* This adds a subtle shadow to make the logo pop from the background */
+    
     filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.6));
 }
 
@@ -114,36 +99,35 @@ nav ul li a:hover {
     border-bottom: 2px solid #ffffff;
 }
 
-/* Style for the current page link in the navigation */
+
 nav ul li a[aria-current="page"] {
-    border-bottom-color: #ffffff; /* Make the underline permanent */
-    cursor: default; /* Indicate it's not meant to be clicked again */
+    border-bottom-color: #ffffff; 
+    cursor: default; 
 }
 
-/* Main Content Area */
+
 main {
-    /* Add padding to the top to push content below the fixed header */
-    padding-top: 4rem; /* Match the header height */
-}
-
-/* Panorama Container */
-#panorama-container {
-    /* Fill the viewport height below the 4rem fixed header */
-    height: calc(100vh - 4rem);
-    width: 100%;
-    background-color: #000; /* Add a background while the iframe loads */
-    position: relative; /* Needed for positioning the buttons */
-    overflow: hidden; /* Hides the other slides */
+    
+    padding-top: 4rem; 
 }
 
 /* =================================
    Panorama Slider Styles
    ================================= */
+   
+#panorama-container {
+    
+    height: calc(100vh - 4rem);
+    width: 100%;
+    background-color: #000; 
+    position: relative; 
+    overflow: hidden; 
+}
 
 .panorama-slider-wrapper {
     display: flex;
     height: 100%;
-    /* Width is set dynamically by JS (e.g., 300% for 3 slides) */
+    
     transition: transform 0.5s ease-in-out;
 }
 
@@ -170,7 +154,7 @@ main {
     padding: 1rem;
     font-size: 1.5rem;
     z-index: 10;
-    opacity: 0.7; /* Semi-visible by default */
+    opacity: 0.7; 
     transition: all 0.3s ease;
     border-radius: 50%;
     width: 50px;
@@ -210,7 +194,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #09598f; /* Add background to match other buttons */
+    background-color: #09598f; 
     transition: all 0.3s ease;
     opacity: 0.7;
 }
@@ -220,30 +204,30 @@ main {
     opacity: 1;
 }
 
-/* Content Sections */
+
 .content-section {
-    padding: 80px 2rem; /* Padding top/bottom and left/right */
-    /* max-width, margin, and background are removed to allow full-width sections */
+    padding: 80px 2rem; 
+    
 }
 
-/* Give sections alternating backgrounds for a modern, clean look */
+
 main > .content-section:nth-of-type(odd) {
     background-color: #ffffff;
 }
 
 main > .content-section:nth-of-type(even) {
-    background-color: #f9f9f9; /* A slightly different shade for contrast */
+    background-color: #f9f9f9; 
 }
 
-/* New wrapper to constrain the width of the text content inside a full-width section */
+
 .content-wrapper {
-    max-width: 1140px; /* Increased width for a wider layout */
+    max-width: 1140px; 
     margin: 0 auto;
 }
 
-/* Specific background for Virtual Tours section to make cards stand out */
+
 #VirtualTours {
-    /* A beautiful gradient background to make the section pop */
+    
     background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 }
 
@@ -252,21 +236,21 @@ main > .content-section:nth-of-type(even) {
   This prevents the layout from shifting when the card itself is maximized.
 */
 .card-placeholder {
-    /* These properties are moved from .iframe-tour-card */
-    flex: 0 0 340px; /* Do not grow, do not shrink, base width of 340px */
-    scroll-snap-align: start; /* Align cards to the start of the container when snapping */
-    position: relative; /* For containing the card */
+    
+    flex: 0 0 340px; 
+    scroll-snap-align: start; 
+    position: relative; 
 }
 
-/* Styling for the new virtual tour cards */
+
 .iframe-tour-card {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Ensures content respects the border-radius */
-    position: relative; /* Will become 'fixed' when maximized */
+    overflow: hidden; 
+    position: relative; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* The card should fill its placeholder */
+    
     width: 100%;
     height: 100%;
 }
@@ -277,32 +261,32 @@ main > .content-section:nth-of-type(even) {
 }
 
 .iframe-tour-card .card-text-content {
-    position: absolute; /* Position over the iframe wrapper */
+    position: absolute; 
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 5; /* Ensure it's on top */
-    padding: 1.5rem; /* Adjust padding for overlay */
-    box-sizing: border-box; /* Include padding in width */
-    /* Add a gradient for text readability */
+    z-index: 5; 
+    padding: 1.5rem; 
+    box-sizing: border-box; 
+    
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
-    pointer-events: none; /* Allow clicks to pass through to the iframe */
+    pointer-events: none; 
 }
 
 .iframe-tour-card h3 {
-    /* Pull the element up and out to fill the top of the card */
+    
     margin: -1.5rem -1.5rem 1.5rem -1.5rem;
     font-size: 1.25rem;
     color: #ffffff;
-    background-color: #09598f; /* The white background you wanted */
-    /* Add padding to create the bar effect */
+    background-color: #09598f; 
+    
     padding: 1rem 1.5rem;
-    /* Ensure consistent height for 1 or 2 lines of text and center it */
+    
     box-sizing: border-box;
     line-height: 1.4;
-    min-height: 5.5rem; /* Reserves space for 2 lines + padding */
+    min-height: 5.5rem; 
     display: flex;
-    align-items: center; /* Vertically centers the title text */
+    align-items: center; 
 }
 
 .iframe-tour-card p {
@@ -315,10 +299,10 @@ main > .content-section:nth-of-type(even) {
 
 .iframe-tour-card .card-iframe-wrapper {
     width: 100%;
-    /* Maintain aspect ratio for the iframe container */
+    
     position: relative;
-    padding-top: 177.78%; /* 9:16 Portrait Aspect Ratio (like YouTube Shorts) */
-    background-color: #f0f0f0; /* Placeholder color while iframe loads */
+    padding-top: 177.78%; 
+    background-color: #f0f0f0; 
 }
 
 .iframe-tour-card .card-iframe-wrapper iframe {
@@ -330,28 +314,28 @@ main > .content-section:nth-of-type(even) {
     border: 0;
 }
 
-/* Styles for the card's maximize button */
+
 .card-maximize-btn {
     position: absolute;
     bottom: 30px;
     left: 12px;
-    background-color: rgba(9, 89, 143, 0.8); /* Match brand color */
+    background-color: rgba(9, 89, 143, 0.8); 
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 8px; /* Rounded corners for a square shape */
+    border-radius: 8px; 
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 6; /* Above iframe, below title overlay if it had pointer events */
+    z-index: 6; 
     transition: all 0.3s ease;
     opacity: 0.85;
 }
 
 .card-maximize-btn:hover {
-    background-color: #07446e; /* Darker brand color on hover */
+    background-color: #07446e; 
     transform: scale(1.1);
     opacity: 1;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
@@ -361,7 +345,7 @@ main > .content-section:nth-of-type(even) {
     font-size: 24px;
 }
 
-/* --- Styles for Maximized (Fullscreen) Card View --- */
+
 
 .iframe-tour-card.maximized {
     position: fixed;
@@ -369,45 +353,45 @@ main > .content-section:nth-of-type(even) {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2000; /* Ensure it's on top of everything */
+    z-index: 2000; 
     border-radius: 0;
     background-color: #000;
-    animation: fadeInModal 0.4s ease-in-out; /* Add a smoother, slightly longer animation */
+    animation: fadeInModal 0.4s ease-in-out; 
 }
 
-/* Class to trigger the fade-out animation */
+
 .iframe-tour-card.minimizing {
-    animation: fadeOutModal 0.4s ease-in-out forwards; /* Match the fade-in animation */
+    animation: fadeOutModal 0.4s ease-in-out forwards; 
 }
 
-/* When maximized, the iframe wrapper should fill the entire screen */
+
 .iframe-tour-card.maximized .card-iframe-wrapper {
-    padding-top: 0; /* Remove the aspect-ratio padding */
+    padding-top: 0; 
     height: 100%;
 }
 
-/* Adjust the title overlay for fullscreen mode */
+
 .iframe-tour-card.maximized .card-text-content {
-    /* The h3 now has a solid background, so this gradient is not needed. */
+    
     background: none;
 }
 
-/* Override the title bar style for fullscreen */
+
 .iframe-tour-card.maximized h3 {
-    /* Let it inherit the theme color from the base .iframe-tour-card h3 style */
+    
     min-height: auto;
-    /* Use negative margins to make it a full-width bar again */
+    
     margin: -1.5rem -1.5rem 1.5rem -1.5rem;
-    padding: 1rem 1.5rem; /* Give it some internal padding */
+    padding: 1rem 1.5rem; 
 }
 
-/* New wrapper to contain the scrollable area and (soon) navigation buttons */
+
 .horizontal-scroll-wrapper {
     position: relative;
-    /* Match the max-width of .content-wrapper for a consistent layout */
-    /* Set width to show exactly 3 cards (3 * 340px) + 2 gaps (2 * 24px) */
+    
+    
     max-width: 1068px;
-    /* Center the wrapper and provide vertical spacing */
+    
     margin: 40px auto;
 }
 
@@ -418,7 +402,7 @@ main > .content-section:nth-of-type(even) {
    - Add padding for aesthetics and scrollbar space.
    - Improve scroll behavior on touch devices.
 */
-/* Use ID for higher specificity to ensure flex layout for scrollers */
+
 #virtual-tours-grid,
 #streetview-grid,
 #photos360-grid,
@@ -426,16 +410,16 @@ main > .content-section:nth-of-type(even) {
     display: flex;
     overflow-x: auto;
     gap: 24px;
-    padding: 10px; /* Add some padding around the cards */
-    scroll-snap-type: x mandatory; /* Optional: snaps cards into view on scroll */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    scrollbar-width: none; /* Firefox */
+    padding: 10px; 
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch; 
+    scrollbar-width: none; 
 }
 #virtual-tours-grid::-webkit-scrollbar,
 #streetview-grid::-webkit-scrollbar,
 #photos360-grid::-webkit-scrollbar,
 #videos360-grid::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+    display: none; 
 }
 
 /*
@@ -449,11 +433,11 @@ main > .content-section:nth-of-type(even) {
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    /* Theming to match the scroll-to-top button */
+    
     background-color: #09598f;
     color: white;
     border: none;
-    border-radius: 50%; /* Circular shape */
+    border-radius: 50%; 
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -465,43 +449,43 @@ main > .content-section:nth-of-type(even) {
 }
 
 .scroll-arrow .material-icons {
-    font-size: 32px; /* Larger icon for a larger button */
+    font-size: 32px; 
 }
 
 .scroll-arrow:hover {
-    background-color: #07446e; /* Darker brand color on hover, matches other buttons */
-    transform: translateY(-50%) scale(1.05); /* Keep vertical centering on transform */
+    background-color: #07446e; 
+    transform: translateY(-50%) scale(1.05); 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .scroll-arrow.prev-arrow {
-    left: -60px; /* Position to the side of the card grid */
+    left: -60px; 
 }
 
 .scroll-arrow.next-arrow {
-    right: -60px; /* Position to the side of the card grid */
+    right: -60px; 
 }
 
 /* =================================
    Responsive Adjustments for Scroller
    ================================= */
 @media (max-width: 768px) {
-    /* On mobile, transform arrows into large, easy-to-tap vertical bars on the edges */
+    
     .horizontal-scroll-wrapper .scroll-arrow {
         top: 0;
         height: 100%;
-        width: 40px; /* A good tap area */
-        transform: none; /* Reset vertical centering */
-        border-radius: 0; /* Make them rectangular */
+        width: 40px; 
+        transform: none; 
+        border-radius: 0; 
         border: none;
-        background-color: rgba(0, 0, 0, 0.25); /* Subtle but visible overlay */
+        background-color: rgba(0, 0, 0, 0.25); 
         color: rgba(255, 255, 255, 0.9);
         font-size: 2rem;
         box-shadow: none;
     }
     .horizontal-scroll-wrapper .scroll-arrow:hover {
-        background-color: rgba(0, 0, 0, 0.4); /* Darken on hover/tap */
-        transform: none; /* Override desktop hover transform */
+        background-color: rgba(0, 0, 0, 0.4); 
+        transform: none; 
         box-shadow: none;
     }
     .scroll-arrow.prev-arrow {
@@ -511,21 +495,20 @@ main > .content-section:nth-of-type(even) {
         right: -38px;
     }
 
-    /* Adjust placeholder size for smaller screens, which in turn sizes the card */
+    
     .card-placeholder {
-        flex-basis: 80vw; /* Show one card and a peek of the next */
+        flex-basis: 80vw; 
     }
 
-    /* Adjust padding and gap for the scroll container on mobile */
+    
     #virtual-tours-grid,
     #streetview-grid,
     #photos360-grid,
     #videos360-grid {
-        gap: 5px;
-        /* Add padding so cards don't touch the screen edge and define snap position */
+        gap: 5px;        
         padding-left: 5px;
         padding-right: 0px;
-        scroll-padding-inline: 5px; /* Make snap points align with padding */
+        scroll-padding-inline: 5px; 
     }
 }
 
@@ -538,33 +521,33 @@ main > .content-section:nth-of-type(even) {
    Homepage Specific Styles
    ================================= */
 
-/* Styles for the summary block on the homepage */
+
 .about-summary {
     text-align: center;
 }
 
-/* Kicker/Eyebrow style for the "About Us" text */
+
 .kicker {
     margin-bottom: 8px;
     font-size: 0.9rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #09598f; /* A deep blue to match the brand */
+    color: #09598f; 
 }
 
-/* A reusable style for subtitles under section headings */
+
 .section-subtitle {
     text-align: center;
     font-size: 1.1rem;
-    color: #555; /* A slightly muted text color */
-    max-width: 650px; /* Constrain line length for readability */
-    margin: -10px auto 40px auto; /* Pull it closer to the h2 and add space below */
+    color: #555; 
+    max-width: 650px; 
+    margin: -10px auto 40px auto; 
     line-height: 1.6;
 }
 
 .about-intro {
-    margin-bottom: 4rem; /* Add space between the intro and the personal card */
+    margin-bottom: 4rem; 
 }
 
 .about-personal-card {
@@ -598,7 +581,7 @@ main > .content-section:nth-of-type(even) {
     color: #1a73e8;
 }
 
-/* Benefits list on the homepage */
+
 .benefits-list {
     list-style: none;
     padding: 0;
@@ -626,8 +609,8 @@ main > .content-section:nth-of-type(even) {
 }
 
 .benefit-list-icon {
-    font-size: 2.5rem; /* A good size for material icons */
-    color: #09598f; /* Main brand color */
+    font-size: 2.5rem; 
+    color: #09598f; 
     flex-shrink: 0;
 }
 
@@ -646,14 +629,14 @@ main > .content-section:nth-of-type(even) {
 
 .benefits-cta {
     text-align: center;
-    margin-top: 2.5rem; /* Space between the list and the button */
+    margin-top: 2.5rem; 
 }
 
-/* General button style */
+
 .btn {
     display: inline-block;
     padding: 12px 28px;
-    background-color: #09598f; /* A deep blue to match the brand */
+    background-color: #09598f; 
     color: #ffffff;
     text-decoration: none;
     font-weight: 500;
@@ -662,48 +645,8 @@ main > .content-section:nth-of-type(even) {
 }
 
 .btn:hover {
-    background-color: #07446e; /* A slightly darker shade on hover */
-    transform: translateY(-2px); /* A subtle lift effect */
-}
-
-/* =================================
-   About Page Specific Styles
-   ================================= */
-
-/* Page Header Banner */
-.page-header {
-    background: linear-gradient(to right, #2c3e50, #000000); /* Dark gradient background */
-    color: #ffffff;
-    text-align: center;
-    padding: 4rem 1rem;
-}
-
-.page-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-.about-text {
-    /* No specific layout styles needed anymore */
-}
-
-.about-text h2 {
-    text-align: center;
-    margin-top: 0;
-    font-size: 1.8rem;
-    color: #2c3e50;
-    margin-bottom: 30px;
-}
-
-.about-text p {
-    line-height: 1.7;
-    font-size: 1.1rem;
-    text-align: center;
-    max-width: 750px; /* Constrain line length for readability */
-    margin-left: auto;
-    margin-right: auto;
+    background-color: #07446e; 
+    transform: translateY(-2px); 
 }
 
 /* =================================
@@ -730,11 +673,11 @@ main > .content-section:nth-of-type(even) {
     flex: 2;
     height: 300px;
     border-radius: 8px;
-    overflow: hidden; /* Ensures the iframe corners are rounded */
+    overflow: hidden; 
 }
 
 .contact-heading {
-    text-align: left !important; /* Override general h2 styles */
+    text-align: left !important; 
     color: #ffffff;
     margin-bottom: 30px;
 }
@@ -778,22 +721,21 @@ main > .content-section:nth-of-type(even) {
    ================================= */
 
 .card-grid {
-    display: grid;
-    /* Create 2 larger columns to make iframe content more visible */
+    display: grid;    
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px; /* Increased space between cards */
-    margin-top: 40px; /* Space below the section title */
+    gap: 40px; 
+    margin-top: 40px; 
 }
 
 .card {
     background-color: #ffffff;
-    border-radius: 12px; /* Match the about-personal-card */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06); /* Match the about-personal-card */
-    overflow: hidden; /* Ensures content (like the iframe) respects the border-radius */
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06); 
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
-    flex: 0 0 340px; /* Do not grow, do not shrink, base width of 340px */
-    scroll-snap-align: start; /* Align cards to the start of the container when snapping */
+    flex: 0 0 340px; 
+    scroll-snap-align: start; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -802,13 +744,13 @@ main > .content-section:nth-of-type(even) {
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* This container makes the iframe responsive */
+
 .card-iframe-container {
     position: relative;
-    /* 16:9 Aspect Ratio */
+    
     padding-top: 56.25%;
     width: 100%;
-    background-color: #e0e0e0; /* Placeholder color while iframe loads */
+    background-color: #e0e0e0; 
 }
 
 .card-iframe-container iframe {
@@ -822,7 +764,7 @@ main > .content-section:nth-of-type(even) {
 
 .card-content {
     padding: 20px;
-    flex-grow: 1; /* Allows content to fill space if cards have different heights */
+    flex-grow: 1; 
 }
 
 .card-content h3 {
@@ -832,42 +774,42 @@ main > .content-section:nth-of-type(even) {
     color: #333;
 }
 
-/* Responsive adjustments for the card grid */
+
 @media (max-width: 768px) {
     .card-grid {
-        grid-template-columns: 1fr; /* 1 column for mobile */
+        grid-template-columns: 1fr; 
     }
 }
 
 .view-more-container {
     text-align: center;
-    margin-top: 50px; /* Space between the card grid and the button */
+    margin-top: 50px; 
 }
 /* =================================
    Footer Styles
    ================================= */
 
-/* Main footer container */
+
 .site-footer {
-    background-color: #1c1c1c; /* A dark, modern background */
-    color: #f0f0f0;           /* Light text color for contrast */
+    background-color: #1c1c1c; 
+    color: #f0f0f0;           
     padding: 40px 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px; /* Space between the links, icons, and bottom text */
+    gap: 30px; 
 }
 
-/* Navigation links section */
+
 .footer-links ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-wrap: wrap; /* Allows links to wrap on smaller screens */
+    flex-wrap: wrap; 
     justify-content: center;
-    gap: 15px 25px; /* Vertical and horizontal gap */
+    gap: 15px 25px; 
 }
 
 .footer-links a {
@@ -878,46 +820,46 @@ main > .content-section:nth-of-type(even) {
 }
 
 .footer-links a:hover {
-    color: #007bff; /* A highlight color on hover */
+    color: #007bff; 
     text-decoration: underline;
 }
 
-/* Style for the current page link in the footer */
+
 .footer-links a[aria-current="page"] {
     color: #ffffff;
     cursor: default;
 }
 
-/* Social media icons section */
+
 .social-icons {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* Space between icons */
+    gap: 20px; 
 }
 
 .social-icons a {
-    display: inline-block; /* Ensures transforms apply correctly */
+    display: inline-block; 
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .social-icons a:hover {
-    transform: scale(1.1) translateY(-2px); /* Enlarge and lift the icon */
-    filter: brightness(1.1) drop-shadow(0 4px 6px rgba(0,0,0,0.25)); /* Add a pop effect */
+    transform: scale(1.1) translateY(-2px); 
+    filter: brightness(1.1) drop-shadow(0 4px 6px rgba(0,0,0,0.25)); 
 }
 
 .social-icons .material-icons {
-    font-size: 48px; /* Adjust size as needed */
-    vertical-align: middle; /* Helps align icons properly */
+    font-size: 48px; 
+    vertical-align: middle; 
 }
 
-/* Brand-specific colors for social icons (default state) */
+
 .social-icons a[title="Google Maps"] .material-icons {
-    /* A four-color conic gradient for a distinct visual effect */
+    
     background: conic-gradient(from 180deg, #4285F4 0 90deg, #34A853 90deg 180deg, #FBBC05 180deg 270deg, #EA4335 270deg 360deg);
-    -webkit-background-clip: text; /* For Safari/Chrome */
+    -webkit-background-clip: text; 
     background-clip: text;
-    color: transparent; /* Makes the text transparent so the background shows through */
+    color: transparent; 
 }
 
 .social-icons a[title="Google Contributor"] .material-icons {
@@ -925,11 +867,11 @@ main > .content-section:nth-of-type(even) {
 }
 
 .social-icons a[title="Instagram"] .material-icons {
-    /* A radial gradient that mimics Instagram's logo */
+    
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-    -webkit-background-clip: text; /* For Safari/Chrome */
+    -webkit-background-clip: text; 
     background-clip: text;
-    color: transparent; /* Makes the text transparent so the background shows through */
+    color: transparent; 
 }
 
 .social-icons a[title="YouTube"] .material-icons {
@@ -940,21 +882,21 @@ main > .content-section:nth-of-type(even) {
     color: #05a081;
 }
 
-/* Bottom text section (copyright) */
+
 .footer-bottom {
-    border-top: 1px solid #444; /* A subtle separator line */
+    border-top: 1px solid #444; 
     padding-top: 20px;
     width: 100%;
-    max-width: 800px; /* Keeps the line from being too wide on large screens */
+    max-width: 800px; 
 }
 
 .footer-bottom p {
     margin: 0;
     font-size: 0.875rem;
-    color: #aaa; /* A more muted color for the copyright text */
+    color: #aaa; 
 }
 
-/* Responsive adjustments for smaller screens */
+
 @media (max-width: 768px) {
     .site-footer {
         padding: 30px 15px;
@@ -962,7 +904,7 @@ main > .content-section:nth-of-type(even) {
     }
 
     .footer-links ul {
-        flex-direction: column; /* Stack links vertically */
+        flex-direction: column; 
         gap: 15px;
     }
 }
@@ -991,12 +933,12 @@ main > .content-section:nth-of-type(even) {
    ================================= */
 
 #why-choose-us {
-    background-color: #f9f9f9; /* A light grey to separate it from the section below */
+    background-color: #f9f9f9; 
 }
 
 .benefits-grid {
     display: grid;
-    /* Creates 3 columns on desktop, and wraps to 1 on mobile */
+    
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 40px;
@@ -1008,15 +950,15 @@ main > .content-section:nth-of-type(even) {
 }
 
 .benefit-icon {
-    font-size: 3rem; /* Makes the icon large and prominent */
-    color: #09598f; /* Use the main brand color */
+    font-size: 3rem; 
+    color: #09598f; 
     margin-bottom: 1rem;
-    /* Gradient background for the icon */
+    
     background: linear-gradient(135deg, #09598f, #007bff);
     color: white;
     border-radius: 50%;
     padding: 15px;
-    display: inline-block; /* Needed for padding and border-radius to work well */
+    display: inline-block; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
@@ -1033,12 +975,9 @@ main > .content-section:nth-of-type(even) {
 /* =================================
    Pricing Page Styles
    ================================= */
-
-/* Adjust card grid for pricing cards which may have more content */
-#pricing .card-grid {
-    /* This allows cards to wrap nicely on different screen sizes */
+#pricing .card-grid {    
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    align-items: stretch; /* Make cards in the same row equal height */
+    align-items: stretch; 
     gap: 30px;
 }
 
@@ -1049,9 +988,9 @@ main > .content-section:nth-of-type(even) {
     padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
-    border-top: 6px solid #09598f; /* Accent color */
-    position: relative; /* Needed for banner positioning */
-    overflow: hidden; /* Hides the part of the banner that goes outside the corner */
+    border-top: 6px solid #09598f; 
+    position: relative; 
+    overflow: hidden; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -1060,14 +999,14 @@ main > .content-section:nth-of-type(even) {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Styles for the "Most Popular" card and its banner */
+
 .pricing-card.popular {
-    border-top-color: #ffc107; /* A vibrant gold to highlight */
-    transform: scale(1.03); /* Make it slightly larger */
+    border-top-color: #ffc107; 
+    transform: scale(1.03); 
 }
 
 .pricing-card.popular:hover {
-    transform: scale(1.03) translateY(-5px); /* Combine scale and hover lift */
+    transform: scale(1.03) translateY(-5px); 
 }
 
 .popular-banner {
@@ -1100,7 +1039,7 @@ main > .content-section:nth-of-type(even) {
     margin: 0 0 1rem 0;
 }
 
-/* Style for the non-numeric price on the custom card */
+
 .pricing-price.custom-quote {
     font-size: 2rem;
     color: #333;
@@ -1116,7 +1055,7 @@ main > .content-section:nth-of-type(even) {
 .pricing-delivery {
     color: #555;
     font-size: 0.9rem;
-    /* Pulls the element up slightly, while maintaining space below */
+    
     margin: -1rem 0 2rem 0;
     display: flex;
     align-items: center;
@@ -1127,33 +1066,33 @@ main > .content-section:nth-of-type(even) {
 }
 
 .pricing-delivery::before {
-    content: 'schedule'; /* Material Icons name for a clock icon */
+    content: 'schedule'; 
     font-family: 'Material Icons';
     font-size: 1.2rem;
     color: #09598f;
-    flex-shrink: 0; /* Prevents icon from shrinking */
+    flex-shrink: 0; 
 }
 
 .features-list {
     list-style: none;
     padding: 0;
     margin: 0 0 2rem 0;
-    flex-grow: 1; /* Pushes bonuses and button to the bottom */
+    flex-grow: 1; 
 }
 
 .features-list li {
     margin-bottom: 1rem;
     display: flex;
-    align-items: center; /* Align icon and text vertically */
-    gap: 10px; /* Space between checkmark and text */
+    align-items: center; 
+    gap: 10px; 
     line-height: 1.4;
 }
 
 .checkmark-icon {
     width: 1.2em;
     height: 1.2em;
-    color: #28a745; /* A nice green for success */
-    flex-shrink: 0; /* Prevents the icon from shrinking */
+    color: #28a745; 
+    flex-shrink: 0; 
 }
 
 .pricing-btn {
@@ -1161,13 +1100,13 @@ main > .content-section:nth-of-type(even) {
     text-align: center;
 }
 
-/* Shared Bonuses Section below the pricing cards */
+
 .shared-bonuses {
     background: #f7faff;
     border: 1px solid #dde8f5;
     border-radius: 12px;
     padding: 2.5rem;
-    margin-top: 4rem; /* Space above the bonus box */
+    margin-top: 4rem; 
     text-align: center;
 }
 
@@ -1220,7 +1159,7 @@ main > .content-section:nth-of-type(even) {
 
 .charges-grid {
     display: grid;
-    /* Using auto-fit to create a responsive grid that wraps automatically */
+    
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     margin-top: 40px;
@@ -1230,22 +1169,22 @@ main > .content-section:nth-of-type(even) {
     background: #ffffff;
     padding: 1.5rem;
     border-radius: 8px;
-    border-left: 4px solid #ffc107; /* Gold accent to match 'popular' card */
+    border-left: 4px solid #ffc107; 
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     display: flex;
-    align-items: flex-start; /* Align icon to the top of the content */
+    align-items: flex-start; 
     gap: 1rem;
 }
 
 .charge-icon {
-    font-size: 1.5rem; /* Emoji size */
-    line-height: 1.2; /* Adjust line height for better vertical alignment */
+    font-size: 1.5rem; 
+    line-height: 1.2; 
     margin-top: 2px;
     flex-shrink: 0;
 }
 
 .charge-icon.material-icons {
-    /* Match the accent border for visual consistency */
+    
     color: #ffc107;
 }
 
@@ -1322,7 +1261,7 @@ main > .content-section:nth-of-type(even) {
 }
 
 .faq-item.active .faq-answer {
-    max-height: 300px; /* A large enough value to accommodate content */
+    max-height: 300px; 
 }
 
 /* =================================
@@ -1350,19 +1289,19 @@ main > .content-section:nth-of-type(even) {
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-/* No Internet Popup Styles */
+
 #no-internet-popup {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent black */
+    background-color: rgba(255, 255, 255, 0.9); 
     color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10000; /* Ensure it's on top of everything */
+    z-index: 10000; 
     text-align: center;
     padding: 20px;
     font-size: 1.5rem;
@@ -1393,7 +1332,7 @@ main > .content-section:nth-of-type(even) {
    ================================= */
 
 .menu-toggle {
-    display: none; /* Hidden by default on larger screens */
+    display: none; 
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
@@ -1413,7 +1352,7 @@ main > .content-section:nth-of-type(even) {
     transition: all 0.3s ease-in-out;
 }
 
-/* Animate hamburger to an "X" when active */
+
 .menu-toggle.is-active .bar:nth-child(1) {
     transform: rotate(45deg) translate(7px, 7px);
 }
@@ -1428,22 +1367,22 @@ main > .content-section:nth-of-type(even) {
 
 @media (max-width: 992px) {
     .menu-toggle {
-        display: flex; /* Show the hamburger menu */
+        display: flex; 
     }
 
     .nav-links {
-        display: none; /* Hide the nav links by default */
+        display: none; 
         flex-direction: column;
         position: absolute;
-        top: 4rem; /* Position below the header */
+        top: 4rem; 
         left: 0;
         width: 100%;
-        background-color: rgba(9, 89, 143, 0.98); /* Use a solid, slightly transparent background */
+        background-color: rgba(9, 89, 143, 0.98); 
         padding: 1rem 0;
         text-align: center;
     }
 
     .nav-links.active {
-        display: flex; /* Show the menu when active */
+        display: flex; 
     }
 }

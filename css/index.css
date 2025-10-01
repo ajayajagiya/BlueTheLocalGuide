@@ -1,0 +1,185 @@
+
+#panorama-container {
+    
+    height: calc(100vh - 4rem);
+    width: 100%;
+    background-color: #000; 
+    position: relative; 
+    overflow: hidden; 
+}
+
+
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.benefits-list li {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #09598f;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.benefits-list li span img{
+    width:  24px;
+    height: 24px;
+}
+
+.benefits-list li div {
+    line-height: 1.6;
+}
+
+.benefit-list-icon {
+    /* font-size: 2.5rem;  */
+    color: #09598f; 
+    /* flex-shrink: 0; */
+}
+
+.benefits-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.benefits-list strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.benefits-cta {
+    text-align: center;
+    margin-top: 2.5rem; 
+}
+
+.benefits-grid {
+    display: grid;
+    
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+#VirtualTours {
+    
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.about-intro {
+    margin-bottom: 4rem; 
+}
+
+.about-personal-card {
+    background: #f7faff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+.about-personal-card h2 {
+    color: #1a73e8;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    margin-top: 0;
+}
+
+.about-personal-card p {
+    line-height: 1.7;
+    font-size: 1.1rem;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-personal-card p:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.about-personal-card strong {
+    color: #1a73e8;
+}
+
+/* =================================
+   Panorama Slider Styles
+   ================================= */
+   
+#panorama-container {
+    
+    height: calc(100vh - 4rem);
+    width: 100%;
+    background-color: #000; 
+    position: relative; 
+    overflow: hidden; 
+}
+
+.panorama-slider-wrapper {
+    display: flex;
+    height: 100%;
+    
+    transition: transform 0.5s ease-in-out;
+}
+
+.panorama-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.panorama-slide iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #09598f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    font-size: 1.5rem;
+    z-index: 10;
+    opacity: 0.7; 
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    background-color: #09598f;
+    opacity: 1;
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+.view-more-container {
+    text-align: center;
+    margin-top: 50px; 
+}

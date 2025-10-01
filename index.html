@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blue The Local Guide</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+
     <!-- TODO: Make sure you have a 'favicon.ico' file in the 'assets/icons/' directory -->
     <!-- Google Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
 </head>
 
@@ -17,7 +19,7 @@
         <nav>
             <a href="index.html" class="logo">
                 <!-- IMPORTANT: Make sure your logo is at 'assets/logo.png' -->
-                <img src="assets/icons/logo.png" alt="Blue The Local Guide Logo" width="160" height="40">
+                <img src="./assets/icons/logo.png" alt="Blue The Local Guide Logo" width="160" height="40">
             </a>
             <button class="menu-toggle" aria-label="Open navigation menu">
                 <span class="bar"></span>
@@ -50,24 +52,38 @@
                 <h2>Why Choose Our Virtual Tours?</h2>
                 <ul class="benefits-list">
                     <li>
-                        <span class="material-icons benefit-list-icon">public</span>
-                        <div><strong>Enhanced Online Presence:</strong> Be visible on Google Maps and attract local customers.</div>
+                        <span class="benefit-list-icon">
+                            <img src="./assets/svg/public.svg" alt="image">
+                        </span>
+
+                        <div><strong>Enhanced Online Presence:</strong> Be visible on Google Maps and attract local
+                            customers.</div>
                     </li>
                     <li>
-                        <span class="material-icons benefit-list-icon">360</span>
-                        <div><strong>Engage and Impress:</strong> Offer an immersive experience that captures attention.</div>
+                        <span class="material-icons benefit-list-icon">
+                            <img src="./assets/svg/360.svg" alt="image">
+                        </span>
+                        <div><strong>Engage and Impress:</strong> Offer an immersive experience that captures attention.
+                        </div>
                     </li>
                     <li>
-                        <span class="material-icons benefit-list-icon">verified_user</span>
-                        <div><strong>Boost Customer Confidence:</strong> Let customers explore your space before visiting.</div>
+                        <span class="material-icons benefit-list-icon">
+                            <img src="./assets/svg/verified_user.svg" alt="image">
+                        </span>
+                        <div><strong>Boost Customer Confidence:</strong> Let customers explore your space before
+                            visiting.</div>
                     </li>
                     <li>
-                        <span class="material-icons benefit-list-icon">extension</span>
-                        <div><strong>Flexible Add-Ons:</strong> Add more photos, videos, or integrate with your website anytime.</div>
+                        <span class="material-icons benefit-list-icon">
+                            <img src="./assets/svg/extension.svg" alt="image">
+                        </span>
+                        <div><strong>Flexible Add-Ons:</strong> Add more photos, videos, or integrate with your website
+                            anytime.</div>
                     </li>
                 </ul>
                 <div class="benefits-cta">
-                    <a href="https://maps.app.goo.gl/WdFU1uXA2LW6L1py8" target="_blank" rel="noopener noreferrer" class="btn">View on Google Maps</a>
+                    <a href="https://maps.app.goo.gl/WdFU1uXA2LW6L1py8" target="_blank" rel="noopener noreferrer"
+                        class="btn">View on Google Maps</a>
                 </div>
             </div>
         </section>
@@ -80,11 +96,15 @@
             <!-- The scroll wrapper is now outside the content-wrapper to be full-width -->
             <div class="horizontal-scroll-wrapper">
                 <button class="scroll-arrow prev-arrow" id="prev-tour-btn" aria-label="Previous Tour">
-                    <span class="material-icons">chevron_left</span>
+                    <span class="material-icons">
+                        &#10094;
+                    </span>
                 </button>
                 <div id="virtual-tours-grid" class="card-grid"></div>
                 <button class="scroll-arrow next-arrow" id="next-tour-btn" aria-label="Next Tour">
-                    <span class="material-icons">chevron_right</span>
+                    <span class="material-icons">
+                        &#10095;
+                    </span>
                 </button>
             </div>
             <div class="content-wrapper">
@@ -109,14 +129,16 @@
                 <div class="about-personal-card">
                     <h2>I'm Ajay Ajagiya, the face behind Blue The Local Guide.</h2>
                     <p>
-                        As a <strong>Google Trusted Photographer</strong> with over five years of in-depth experience, my
+                        As a <strong>Google Trusted Photographer</strong> with over five years of in-depth experience,
+                        my
                         mission is to virtually bring your customers to you. I create immersive 360° tours that allow
                         anyone, whether they're local to Vadodara or halfway across India, to explore your business from
                         their own screen.
                     </p>
                     <p>
                         My work bridges the gap between online discovery and real-world visits. By enabling potential
-                        customers to walk around your space before they even arrive, we build trust and create a connection
+                        customers to walk around your space before they even arrive, we build trust and create a
+                        connection
                         that feels like being right there.
                     </p>
                 </div>
@@ -162,30 +184,38 @@
                 <li><a href="gallery.html">Galleries</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="#AboutUs">About Us</a></li>
-                <li><a href="#ContactUs">Contact Us</a></li>
             </ul>
         </div>
         <div class="social-icons">
-            <a href="https://maps.app.goo.gl/eHxS6yXGXqgpkP7B8" target="_blank" title="Google Maps">
-                <span class="sr-only">Visit our Google Maps page</span>
-                <span class="material-icons" aria-hidden="true">location_on</span>
+            <a href="https://maps.app.goo.gl/eHxS6yXGXqgpkP7B8" target="_blank" title="Google Business">
+                <span class="sr-only">Visit our Google Business page</span>
+                <span class="material-icons" aria-hidden="true">
+                    <img src="./assets/svg/storefront.svg" alt="image">
+                </span>
             </a>
-            <a href="https://www.google.com/maps/contrib/105876465691090833615?utm_source=mstt_0" target="_blank"
-                title="Google Contributor">
+            <a href="https://www.google.com/maps/contrib/105876465691090833615?utm_source=mstt_0" target="_blank" title="Google Mpas Contributor">
                 <span class="sr-only">View our Google Contributor profile</span>
-                <span class="material-icons" aria-hidden="true">person_add</span>
+                <span class="material-icons" aria-hidden="true">
+                    <img src="./assets/svg/location_on.svg" alt="image">
+                </span>
             </a>
             <a href="https://www.instagram.com/blue.thelocalguide/" target="_blank" title="Instagram">
                 <span class="sr-only">Follow us on Instagram</span>
-                <span class="material-icons" aria-hidden="true">photo_camera</span>
+                <span class="material-icons" aria-hidden="true">
+                    <img src="./assets/svg/photo_camera.svg" alt="image">
+                </span>
             </a>
             <a href="https://www.youtube.com/@blue.thelocalguide?themeRefresh=1" target="_blank" title="YouTube">
                 <span class="sr-only">Subscribe to our YouTube channel</span>
-                <span class="material-icons" aria-hidden="true">play_circle</span>
+                <span class="material-icons" aria-hidden="true">
+                    <img src="./assets/svg/youtube.svg" alt="image">
+                </span>
             </a>
             <a href="https://www.pexels.com/@ajay-ajagiya-782821320/" target="_blank" title="Pexels">
                 <span class="sr-only">See our photos on Pexels</span>
-                <span class="material-icons" aria-hidden="true">local_parking</span>
+                <span class="material-icons" aria-hidden="true">
+                    <img src="./assets/svg/local_parking.svg" alt="image">
+                </span>
             </a>
         </div>
         <div class="footer-bottom">
@@ -193,11 +223,14 @@
         </div>
     </footer>
 
-    <button id="scrollToTopBtn" class="scroll-to-top-btn" title="Go to top"><span class="material-icons">arrow_upward</span></button>
+    <button id="scrollToTopBtn" class="scroll-to-top-btn" title="Go to top">
+        <img src="./assets/svg/arrow_upward.svg" alt="Scroll to top arrow" height="70%" width="70%">
+    </button>
 
-    <script src="PanoramaData.js"></script>
-    <script src="VirtualToursData.js"></script>
-    <script src="main.js"></script>
+    <script src="datajs/PanoramaData.js"></script>
+    <script src="datajs/VirtualToursData.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
