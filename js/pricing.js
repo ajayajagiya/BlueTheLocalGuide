@@ -1,10 +1,12 @@
 function openPopup() {
-    document.getElementById('quotePopup').style.display = 'flex';
+    document.getElementById('quoteFormSection').style.display = 'block';
+    document.getElementById('quoteFormSection').scrollIntoView({ behavior: 'smooth' });
 }
 
 function closePopup() {
-    document.getElementById('quotePopup').style.display = 'none';
+    document.getElementById('quoteFormSection').style.display = 'none';
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- FAQ Accordion Logic ---
