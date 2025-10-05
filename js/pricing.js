@@ -1,11 +1,19 @@
+function openPopup() {
+    document.getElementById('quotePopup').style.display = 'flex';
+}
+
+function closePopup() {
+    document.getElementById('quotePopup').style.display = 'none';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-// --- FAQ Accordion Logic ---
+    // --- FAQ Accordion Logic ---
     const faqItems = document.querySelectorAll('.faq-item');
 
     if (faqItems.length > 0) {
         faqItems.forEach(item => {
             const questionButton = item.querySelector('.faq-question');
-            
+
             questionButton.addEventListener('click', () => {
                 // First, check if another item is already active and close it
                 const currentlyActiveItem = document.querySelector('.faq-item.active');

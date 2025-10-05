@@ -3,9 +3,9 @@
    ================================= */
 
 
-#pricing .card-grid {    
+#pricing .card-grid {
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    align-items: stretch; 
+    align-items: stretch;
     gap: 30px;
 }
 
@@ -16,9 +16,9 @@
     padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
-    border-top: 6px solid #09598f; 
-    position: relative; 
-    overflow: hidden; 
+    border-top: 6px solid #09598f;
+    position: relative;
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -29,12 +29,12 @@
 
 
 .pricing-card.popular {
-    border-top-color: #ffc107; 
-    transform: scale(1.03); 
+    border-top-color: #ffc107;
+    transform: scale(1.03);
 }
 
 .pricing-card.popular:hover {
-    transform: scale(1.03) translateY(-5px); 
+    transform: scale(1.03) translateY(-5px);
 }
 
 .popular-banner {
@@ -49,7 +49,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     z-index: 2;
 }
 
@@ -83,7 +83,7 @@
 .pricing-delivery {
     color: #555;
     font-size: 0.9rem;
-    
+
     margin: -1rem 0 2rem 0;
     display: flex;
     align-items: center;
@@ -93,41 +93,42 @@
     border-radius: 6px;
 }
 
-.pricing-delivery  img {
-height: 24px;
-width: 24px;
+.pricing-delivery img {
+    height: 24px;
+    width: 24px;
 }
 
 .charges-grid img {
-height: 24px;
-width: 24px;
+    height: 24px;
+    width: 24px;
 }
 
 .features-list {
     list-style: none;
     padding: 0;
     margin: 0 0 2rem 0;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .features-list li {
     margin-bottom: 1rem;
     display: flex;
-    align-items: center; 
-    gap: 10px; 
+    align-items: center;
+    gap: 10px;
     line-height: 1.4;
 }
 
 .checkmark-icon {
     width: 1.2em;
     height: 1.2em;
-    color: #28a745; 
-    flex-shrink: 0; 
+    color: #28a745;
+    flex-shrink: 0;
 }
 
 .pricing-btn {
     margin-top: 2rem;
     text-align: center;
+    cursor: pointer;
 }
 
 
@@ -136,7 +137,7 @@ width: 24px;
     border: 1px solid #dde8f5;
     border-radius: 12px;
     padding: 2.5rem;
-    margin-top: 4rem; 
+    margin-top: 4rem;
     text-align: center;
 }
 
@@ -164,7 +165,8 @@ width: 24px;
     margin: 0 0 1rem 0;
 }
 
-.bonus-item p, .bonus-item li {
+.bonus-item p,
+.bonus-item li {
     color: #555;
     line-height: 1.6;
     font-size: 1rem;
@@ -182,14 +184,14 @@ width: 24px;
         text-align: center;
     }
 }
-    
+
 /* =================================
    Additional Charges Section
    ================================= */
 
 .charges-grid {
     display: grid;
-    
+
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     margin-top: 40px;
@@ -199,22 +201,22 @@ width: 24px;
     background: #ffffff;
     padding: 1.5rem;
     border-radius: 8px;
-    border-left: 4px solid #ffc107; 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border-left: 4px solid #ffc107;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
     display: flex;
-    align-items: flex-start; 
+    align-items: flex-start;
     gap: 1rem;
 }
 
 .charge-icon {
-    font-size: 1.5rem; 
-    line-height: 1.2; 
+    font-size: 1.5rem;
+    line-height: 1.2;
     margin-top: 2px;
     flex-shrink: 0;
 }
 
 .charge-icon.material-icons {
-    
+
     color: #ffc107;
 }
 
@@ -291,5 +293,67 @@ width: 24px;
 }
 
 .faq-item.active .faq-answer {
-    max-height: 300px; 
+    max-height: 300px;
+}
+
+/* Overlay background */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup box */
+.popup-content {
+    background-color: white;
+    padding-top: 40px;
+    border-radius: 8px;
+    height: 90vh;
+    width: 800px;
+    position: relative;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 32px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+    .popup-content {
+        padding-top: 40px;
+        height: 90vh;
+        width: 100vw;
+    }
+
+    .close-btn {
+        top: 5px;
+        right: 10px;
+    }
+}
+
+/* Responsive text */
+@media (max-width: 992px) and (min-width: 769px) {
+    .popup-content {
+        padding-top: 40px;
+        height: 90vh;
+        width: 80vw;
+    }
+
+    .close-btn {
+        top: 5px;
+        right: 10px;
+    }
 }
