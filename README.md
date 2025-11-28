@@ -1,2 +1,12 @@
-# BlueTheLocalGuide
-Blue The Local Guide creates Google-certified 360° virtual tours using Street View technology. We help businesses enhance their online presence with immersive, high-resolution tours that work on any device, boosting credibility and attracting new customers through Google Search and Maps.
+Bluez360: See Inside. Build Trust. Gain Customers.
+
+Company Info Bluez360 creates Google-certified 360° virtual tours using Street View technology. The company helps businesses in Vadodara and surrounding areas to improve their online presence with high-resolution, immersive tours compatible with any device, aiming to boost credibility and attract customers via Google Search and Maps. The person behind the company is Ajay Ajagiya, a Google Trusted Photographer with over five years of experience. The company's website navigation includes Home, Virtual Tours, Galleries, Pricing, About Us, and Contact Us. The gallery showcases 360° videos, 360° photos, Street View contributions, and interactive virtual tours.
+
+Services The core service is the creation of 360° virtual tours. Benefits cited include enhanced online presence on Google Maps, engaging immersive experiences, increased customer confidence by allowing pre-visit exploration, and the flexibility to add more photos or videos. The tours are published on Google Maps and can be integrated into a client's website. The portfolio includes 360° videos, photos, and Google Street View tours for various businesses and properties.
+
+Pricing Plans The company offers three main pricing tiers:
+
+Mini Tour (₹2000): Includes 4x 360° photographs, photo editing, virtual tour creation, and hosting on Google Maps, with a delivery time of at least 5 days.
+Grand Tour (₹4500): Marketed as the most popular option, this plan includes 8x 360° photographs, a 1-minute 360° promotional video, photo editing, tour creation, Google Maps hosting, website iframe integration, and priority delivery within 3-4 days.
+Custom Package: A tailored plan for unique requirements such as multi-location tours, advanced editing, and real estate photography and videography, with pricing and delivery time dependent on the project's complexity.
+Additional charges may apply for travel expenses for projects outside Vadodara, urgent delivery (₹500 for 24-36 hour turnaround), extra 360° photos (₹150 per photo), custom video add-ons (starting at ₹1000), and website embedding support (₹300). Bonuses are offered, including a free extra photo for leaving a Google review and referral discounts of ₹200 or ₹500. A verified Google Business Profile is required for tour publication.
